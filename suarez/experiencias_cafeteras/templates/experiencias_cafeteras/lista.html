@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Experiencias Cafeteras - Alcaldía de Suárez{% endblock %}
+
+{% block content %}
+<!-- Cinematic Hero -->
+<section class="hero-coffee animate-fade"
+    style="--hero-bg: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80');">
+    <div class="container position-relative z-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <span class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase">Tradición y
+                    Aroma</span>
+                <h1 class="display-2 fw-bold text-white mb-4">Sabor de Nuestra Tierra</h1>
+                <p class="lead fs-4 text-white opacity-90 mb-0">Un recorrido sensorial por las fincas y el legado de las
+                    familias cafeteras de Suárez, Cauca.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Story Grid Section -->
+<section class="section-padding bg-parchment">
+    <div class="container">
+        <header class="mb-5 text-center">
+            <h2 class="section-title mx-auto text-uppercase" style="display: table;">Historias que Inspiran</h2>
+            <p class="text-muted fs-5 mt-3">Cada grano cuenta una historia de esfuerzo, identidad y compromiso con la
+                calidad.</p>
+        </header>
+
+        <div class="row g-4">
+            {% for exp in experiencias %}
+            <div class="col-lg-4 col-md-6">
+                <a href="{% url 'experiencias_cafeteras:detalle' exp.pk %}" class="text-decoration-none">
+                    <div class="experience-story-card">
+                        <span class="experience-badge">{{ forloop.counter|stringformat:"02d" }}</span>
+                        <img src="{{ exp.imagen_principal.url }}" class="experience-card-img" alt="{{ exp.titulo }}">
+                        <div class="experience-card-content">
+                            <h3 class="fw-bold mb-2 h4">{{ exp.titulo }}</h3>
+                            <p class="small opacity-90 mb-3">{{ exp.historia|truncatewords:18 }}</p>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-accent fw-bold small text-uppercase">Descubrir historia</span>
+                                <i class="bi bi-arrow-right text-accent"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-cup-hot display-1 text-muted opacity-25 mb-4 d-block"></i>
+                <h3 class="text-muted">Próximamente compartiremos nuevas historias...</h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Info -->
+<section class="section-padding section-alt">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="fw-bold mb-4">¿Eres productor o parte de una asociación?</h2>
+                <p class="fs-5 text-muted mb-5">Queremos que tu historia sea parte de este portal institucional.
+                    Contáctanos para destacar tu marca y proceso.</p>
+                <a href="{% url 'contacto:index' %}" class="btn-premium text-decoration-none">Contactar con Desarrollo
+                    Rural</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

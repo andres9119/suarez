@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load youtube_tags %}
+
+{% block title %}Inicio - Alcaldía de Suárez{% endblock %}
+
+{% block content %}
+<!-- Banner Hero Dinámico -->
+<section class="hero-institution animate-fade" {% if banner.imagen_fondo %}
+    style="--hero-bg: url('{{ banner.imagen_fondo.url }}'); padding: 120px 0 80px;" {% endif %}>
+    <div class="container hero-content text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h1 class="display-3 fw-bold mb-4">
+                    {% if banner %}
+                    {{ banner.titulo }}
+                    {% else %}
+                    Bienvenidos a <span style="color: var(--accent);">Suárez</span>
+                    {% endif %}
+                </h1>
+                <p class="lead fs-4 opacity-90 mb-5 text-white">
+                    {% if banner %}
+                    {{ banner.subtitulo }}
+                    {% else %}
+                    Portal Institucional de la Alcaldía Municipal.
+                    {% endif %}
+                </p>
+                <div class="d-flex gap-3 justify-content-center">
+                    {% if banner %}
+                    <a href="{{ banner.link_boton }}" class="btn-premium text-decoration-none">
+                        {{ banner.texto_boton }}
+                    </a>
+                    {% else %}
+                    <a href="{% url 'noticias:lista' %}" class="btn-premium text-decoration-none">
+                        Ver Noticias
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'contacto:index' %}"
+                        class="btn btn-outline-light btn-lg rounded-pill px-5">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección: Cifras -->
+<section class="section-padding section-alt shadow-sm">
+    <div class="container">
+        <header class="mb-5 text-center">
+            <h2 class="section-title mx-auto" style="display: table;">Suárez en Cifras</h2>
+        </header>
+        <div class="row g-4 text-center">
+            <div class="col-6 col-md-3">
+                <div class="stat-card border-0 bg-transparent shadow-none">
+                    <span class="stat-value text-dark">1,050</span>
+                    <span class="stat-label">msnm</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card border-0 bg-transparent shadow-none">
+                    <span class="stat-value text-dark">22,000+</span>
+                    <span class="stat-label">Habitantes</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card border-0 bg-transparent shadow-none">
+                    <span class="stat-value text-dark">158</span>
+                    <span class="stat-label">Años</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card border-0 bg-transparent shadow-none">
+                    <span class="stat-value text-dark">100%</span>
+                    <span class="stat-label">Cauca</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección: Eventos -->
+<section class="section-padding">
+    <div class="container">
+        <header class="mb-5">
+            <h2 class="section-title">Actualidad y Compromiso</h2>
+        </header>
+
+        {% for evento in eventos %}
+        <div class="row row-alternate g-5 mb-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="rounded-5 overflow-hidden shadow-lg">
+                    {% if evento.imagen %}
+                    <img src="{{ evento.imagen.url }}" class="img-fluid w-100" alt="{{ evento.titulo }}"
+                        style="height: 400px; object-fit: cover;">
+                    {% else %}
+                    <div class="bg-secondary w-100" style="height: 400px;"></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ps-lg-4">
+                    <div class="text-primary fw-bold mb-2 fs-5">{{ evento.fecha_evento }}</div>
+                    <h3 class="fw-bold mb-3 display-6">{{ evento.titulo }}</h3>
+                    <p class="text-muted fs-5 mb-4 leading-relaxed">{{ evento.descripcion }}</p>
+                    {% if evento.link %}
+                    <a href="{{ evento.link }}" class="btn-premium text-decoration-none d-inline-block">Conoce más
+                        detalles</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No hay eventos destacados.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Sección: Videos -->
+<section class="section-padding section-alt shadow-inner">
+    <div class="container">
+        <header class="mb-5 text-center">
+            <h2 class="section-title mx-auto" style="display: table;">Canal Institucional</h2>
+            <p class="text-muted mt-2 small">Si algún video no carga, intenta usar el botón de "Ver en YouTube".</p>
+        </header>
+        <div class="row g-5 justify-content-center">
+            {% for video in videos %}
+            <div class="col-lg-10 col-xl-8">
+                <div class="video-item mb-5">
+                    <div class="ratio ratio-16x9 shadow-lg rounded-5 overflow-hidden bg-black">
+                        <iframe src="{{ video.url_embebida|youtube_embed }}" title="{{ video.titulo }}"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="no-referrer-when-downgrade" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="text-center mt-4">
+                        <h4 class="fw-bold text-dark mb-3">{{ video.titulo }}</h4>
+                        <div class="d-flex justify-content-center gap-2">
+                            <div
+                                style="width: 40px; height: 3px; background: var(--accent); border-radius: 2px; align-self: center;">
+                            </div>
+                            <a href="{{ video.url_embebida }}" target="_blank"
+                                class="btn btn-sm btn-outline-danger rounded-pill px-3">
+                                <i class="bi bi-youtube me-2"></i>Ver en YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Sección: Galería (Arquitectura Native Grouped) -->
+<section class="section-padding">
+    <div class="container">
+        <header class="mb-5 text-center">
+            <h2 class="section-title mx-auto" style="display: table;">Suárez en Imágenes</h2>
+            <p class="text-muted">Desliza para ver más de nuestro municipio</p>
+        </header>
+
+        {% if imagenes %}
+        <div id="galleryCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner px-4">
+                {% for img in imagenes %}
+                {% if forloop.counter0|divisibleby:3 %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="carousel-gallery-row">
+                        {% endif %}
+
+                        <div class="carousel-gallery-item">
+                            <div class="gallery-item-wrapper">
+                                <img src="{{ img.imagen.url }}" class="gallery-img" alt="{{ img.titulo }}">
+                                {% if img.titulo %}
+                                <div class="gallery-caption-overlay">
+                                    <h5 class="fw-bold mb-0 text-white">{{ img.titulo }}</h5>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% if forloop.counter|divisibleby:3 or forloop.last %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

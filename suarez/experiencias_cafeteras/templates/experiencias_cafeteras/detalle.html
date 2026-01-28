@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load youtube_tags %}
+
+{% block title %}{{ experiencia.titulo }} - Aroma de Suárez{% endblock %}
+
+{% block content %}
+<!-- Immersive Story Header -->
+<section class="hero-coffee" style="--hero-bg: url('{{ experiencia.imagen_principal.url }}'); height: 75vh;">
+    <div class="container position-relative z-2">
+        <div class="row align-items-end" style="min-height: 50vh;">
+            <div class="col-lg-10">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb bg-transparent p-0 mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
+                                class="text-white opacity-75">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'experiencias_cafeteras:lista' %}"
+                                class="text-white opacity-75">Experiencias</a></li>
+                        <li class="breadcrumb-item active text-accent" aria-current="page">{{ experiencia.titulo }}</li>
+                    </ol>
+                </nav>
+                <h1 class="display-1 fw-bold text-white mb-2">{{ experiencia.titulo }}</h1>
+                <div class="d-flex align-items-center gap-3 text-accent fs-5 fw-bold mb-4">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Municipio de Suárez, Cauca</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Storytelling Content -->
+<section class="section-padding bg-parchment">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Left Column: The Human Story -->
+            <div class="col-lg-7">
+                <div class="pe-lg-5">
+                    <h2 class="section-title mb-4">La Historia del Grano</h2>
+                    <div class="quote-parchment mb-5">
+                        {{ experiencia.historia|truncatewords:60 }}
+                    </div>
+                    <div class="content-text fs-5" style="color: #4e342e; line-height: 1.8;">
+                        <p>{{ experiencia.historia }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: The Sensory Process -->
+            <div class="col-lg-5">
+                <div class="sensory-process-box sticky-top" style="top: 120px;">
+                    <div class="d-flex align-items-center mb-4 text-coffee-palette-primary">
+                        <div class="bg-accent p-3 rounded-circle me-3">
+                            <i class="bi bi-gear-fill fs-3 text-navy"></i>
+                        </div>
+                        <h3 class="mb-0 fw-bold text-uppercase">Proceso y Calidad</h3>
+                    </div>
+                    <hr class="mb-4 opacity-10">
+                    <div class="process-steps">
+                        <div class="content-text" style="color: #3e2723;">
+                            {{ experiencia.proceso|linebreaks }}
+                        </div>
+                    </div>
+
+                    {% if experiencia.video_url %}
+                    <div class="mt-5">
+                        <h4 class="fw-bold mb-3 small text-uppercase text-muted">Acompaña el recorrido:</h4>
+                        <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+                            <iframe src="{{ experiencia.video_url|youtube_embed }}" title="Recorrido Visual"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Proof/Legacy -->
+        <div class="row mt-5 pt-5 text-center justify-content-center">
+            <div class="col-lg-10">
+                <div class="bg-white p-5 rounded-5 shadow-sm border border-light">
+                    <i class="bi bi-award-fill display-3 text-accent mb-3 d-block"></i>
+                    <h3 class="fw-bold">Orgullo Caucano</h3>
+                    <p class="text-muted fs-5 mb-0">Esta experiencia representa el esfuerzo de familias que ven en el
+                        café no solo un sustento, sino una forma de vida y un legado para las futuras generaciones de
+                        Suárez.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="mt-5 pt-5 d-flex justify-content-between align-items-center border-top">
+            <a href="{% url 'experiencias_cafeteras:lista' %}" class="btn btn-outline-dark btn-lg rounded-pill px-4">
+                <i class="bi bi-arrow-left me-2"></i> Otras Historias
+            </a>
+            <div class="d-none d-md-block text-muted small text-uppercase fw-bold letter-spacing-1">
+                Compartiendo el legado cafetero
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

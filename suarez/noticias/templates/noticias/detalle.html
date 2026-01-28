@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ noticia.titulo }} - Alcaldía de Suárez{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'noticias:lista' %}">Noticias</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ noticia.titulo }}</li>
+        </ol>
+    </nav>
+
+    <div class="row animate-fade">
+        <div class="col-lg-10 mx-auto">
+            <header class="mb-5">
+                <h1 class="display-4 fw-bold section-title">{{ noticia.titulo }}</h1>
+                <p class="text-muted fs-5">
+                    <i class="bi bi-calendar3 me-2"></i>
+                    Publicado el {{ noticia.fecha_publicacion|date:"d \d\e F, Y" }}
+                </p>
+            </header>
+
+            {% if noticia.imagen_destacada %}
+            <div class="mb-5 position-relative">
+                <img src="{{ noticia.imagen_destacada.url }}" class="img-fluid rounded-4 shadow-lg w-100"
+                    style="max-height: 500px; object-fit: cover;" alt="{{ noticia.titulo }}">
+                {% if noticia.es_evento %}
+                <div class="position-absolute top-0 end-0 m-4">
+                    <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill shadow">
+                        <i class="bi bi-star-fill me-1"></i> EVENTO
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <div class="content-text fs-5">
+                {{ noticia.contenido|linebreaks }}
+            </div>
+
+            {% if noticia.es_evento %}
+            <div class="card bg-light border-0 shadow-sm rounded-4 p-4 mt-5 border-start border-4 border-warning">
+                <div class="d-flex align-items-center">
+                    <div class="bg-warning text-dark rounded-circle p-3 me-3">
+                        <i class="bi bi-calendar-check fs-4"></i>
+                    </div>
+                    <div>
+                        <h4 class="mb-1 fw-bold">¡No faltes al evento!</h4>
+                        <p class="mb-0 text-muted">Este evento se llevará a cabo el día <strong>{{
+                                noticia.fecha_evento|date:"d/m/Y" }}</strong>.</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="mt-5 pt-4 border-top">
+                <a href="{% url 'noticias:lista' %}" class="btn btn-premium-secondary btn-lg">
+                    <i class="bi bi-arrow-left me-2"></i> Volver a noticias
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

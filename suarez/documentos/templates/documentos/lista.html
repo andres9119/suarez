@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Documentos Públicos - Alcaldía de Suárez{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-primary">Transparencia: Documentos Públicos</h1>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group shadow-sm">
+            <a href="#" class="list-group-item list-group-item-action active"
+                style="background-color: #004a2f; border: none;">Todas las Categorías</a>
+            {% for cat in categorias %}
+            <a href="#" class="list-group-item list-group-item-action">{{ cat.nombre }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="table-responsive bg-white p-3 rounded shadow-sm">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Título</th>
+                        <th>Categoría</th>
+                        <th>Fecha</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for doc in documentos %}
+                    <tr>
+                        <td><strong>{{ doc.titulo }}</strong></td>
+                        <td><span class="badge bg-light text-dark border">{{ doc.categoria.nombre }}</span></td>
+                        <td>{{ doc.fecha_subida|date:"d/m/Y" }}</td>
+                        <td>
+                            <a href="{{ doc.archivo.url }}" class="btn btn-sm btn-primary" download>Descargar</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No hay documentos disponibles.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

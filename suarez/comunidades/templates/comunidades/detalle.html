@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ comunidad.nombre }} - Alcaldía de Suárez{% endblock %}
+
+{% block content %}
+<!-- Hero Section for Detail -->
+<section class="hero-institution mb-5" style="padding: 100px 0 60px;">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}" class="text-white opacity-75">Inicio</a>
+                </li>
+                <li class="breadcrumb-item"><a href="{% url 'comunidades:lista' %}"
+                        class="text-white opacity-75">Comunidades</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">{{ comunidad.nombre }}</li>
+            </ol>
+        </nav>
+        <div class="row align-items-center">
+            <div class="col-md-2 text-center text-md-start">
+                {% if comunidad.logo_o_emblema %}
+                <img src="{{ comunidad.logo_o_emblema.url }}"
+                    class="rounded-circle shadow-lg border border-3 border-white mb-3"
+                    style="width: 150px; height: 150px; object-fit: cover;" alt="{{ comunidad.nombre }}">
+                {% endif %}
+            </div>
+            <div class="col-md-10">
+                <span class="badge bg-accent text-dark mb-2 px-3 py-2 rounded-pill fw-bold">{{
+                    comunidad.get_tipo_display }}</span>
+                <h1 class="display-3 fw-bold text-white">{{ comunidad.nombre }}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mb-5">
+    <div class="row g-5">
+        <!-- Content Side -->
+        <div class="col-lg-7">
+            <div class="card-premium p-5 mb-5 animate-fade">
+                <h2 class="section-title">Reseña Cultural</h2>
+                <div class="content-text fs-5 mb-5">
+                    {{ comunidad.resena_cultural|linebreaks }}
+                </div>
+
+                <h2 class="section-title">Nuestra Historia</h2>
+                <div class="content-text fs-5">
+                    {{ comunidad.historia|linebreaks }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Media Side/Carousel -->
+        <div class="col-lg-5">
+            <div class="sticky-top" style="top: 100px;">
+                <h2 class="section-title">Galería Fotográfica</h2>
+
+                {% if comunidad.imagenes.all %}
+                <div id="communityCarousel" class="carousel slide card-premium overflow-hidden shadow-lg animate-fade"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for img in comunidad.imagenes.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ img.imagen.url }}" class="d-block w-100"
+                                style="height: 450px; object-fit: cover;" alt="{{ img.descripcion }}">
+                            {% if img.descripcion %}
+                            <div class="carousel-caption d-none d-md-block"
+                                style="background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border-radius: 10px;">
+                                <p class="mb-0">{{ img.descripcion }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if comunidad.imagenes.count > 1 %}
+                    <button class="carousel-control-prev" type="button" data-bs-target="#communityCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#communityCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                    {% endif %}
+                </div>
+
+                <!-- Thumbnails for quick navigation -->
+                <div class="row g-2 mt-3">
+                    {% for img in comunidad.imagenes.all %}
+                    <div class="col-3">
+                        <img src="{{ img.imagen.url }}"
+                            class="img-fluid rounded cursor-pointer opacity-75 hover-opacity-100"
+                            style="height: 60px; width: 100%; object-fit: cover; cursor: pointer;"
+                            data-bs-target="#communityCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
+                            alt="Thumbnail">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-secondary text-center py-5 rounded-4">
+                    <p class="mb-0">Todavía no hay fotos en esta galería.</p>
+                </div>
+                {% endif %}
+
+                <div class="mt-5">
+                    <a href="{% url 'comunidades:lista' %}"
+                        class="btn-premium d-inline-block text-decoration-none">&larr; Volver a comunidades</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .hover-opacity-100:hover {
+        opacity: 1 !important;
+        transition: var(--transition);
+    }
+
+    .content-text {
+        color: var(--text-main);
+        line-height: 1.8;
+    }
+
+    .bg-accent {
+        background-color: var(--accent) !important;
+    }
+</style>
+{% endblock %}

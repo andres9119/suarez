@@ -1,0 +1,388 @@
+/* CSS - Alcaldía de Suárez - Cauca */
+
+:root {
+    --primary: #2d5a27;
+    /* Verde institucional más profundo */
+    --accent: #ffc107;
+    /* Amarillo/Dorado institucional */
+    --dark: #1a1a1a;
+    --navy: #00251a;
+    /* Azul muy oscuro para el footer/header */
+    --light: #f8f9fa;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+.fw-bold {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- Header & Navigation --- */
+.navbar-custom {
+    background: var(--navy);
+    padding: 1.2rem 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: var(--white) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem !important;
+    position: relative;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    opacity: 1;
+    color: var(--accent) !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1.2rem;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: calc(100% - 2.4rem);
+}
+
+/* --- Global Section Padding --- */
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-alt {
+    background: var(--light);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin-top: 15px;
+}
+
+/* --- Footer --- */
+.footer-premium {
+    background: var(--navy);
+    color: var(--white);
+    padding: 60px 0 20px;
+}
+
+.footer-premium h5 {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.4rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease;
+    opacity: 0.7;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+    opacity: 1;
+}
+
+/* --- Hero Section --- */
+.hero-institution {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--hero-bg, #004d40);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-premium {
+    background: var(--accent);
+    color: var(--navy);
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-block;
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+    background: #ffca2c;
+    color: var(--navy);
+}
+
+/* --- Stats & Layout Helpers --- */
+.stat-value {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--primary);
+    display: block;
+}
+
+.stat-label {
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.row-alternate:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.gallery-item-wrapper {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item-wrapper:hover .gallery-img {
+    transform: scale(1.1);
+}
+
+.gallery-caption-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item-wrapper:hover .gallery-caption-overlay {
+    opacity: 1;
+}
+
+/* --- Carousel Galería (Native Grouped Architecture) --- */
+.carousel-gallery-row {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem;
+}
+
+.carousel-gallery-item {
+    flex: 0 0 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+}
+
+@media (max-width: 992px) {
+    .carousel-gallery-item {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-gallery-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1 !important;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-control-prev {
+    left: -24px;
+}
+
+.carousel-control-next {
+    right: -24px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: var(--accent);
+}
+
+/* --- Immersive Coffee Experience Design System --- */
+
+.bg-parchment {
+    background-color: #fcf9f2;
+    background-image: url("https://www.transparenttextures.com/patterns/papyrus.png");
+}
+
+.coffee-palette-accent {
+    color: #8d6e63;
+}
+
+.coffee-palette-primary {
+    color: #4e342e;
+}
+
+.coffee-palette-depth {
+    color: #3e2723;
+}
+
+/* Cinematic Hero for Coffee */
+.hero-coffee {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 10px solid var(--accent);
+}
+
+.hero-coffee::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(62, 39, 35, 0.9), rgba(0, 0, 0, 0.2));
+}
+
+/* Story Cards Grid */
+.experience-story-card {
+    height: 450px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 2rem;
+}
+
+.experience-story-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.experience-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.experience-story-card:hover .experience-card-img {
+    transform: scale(1.1);
+}
+
+.experience-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(to top, rgba(62, 39, 35, 0.95) 20%, transparent);
+    color: white;
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+.experience-story-card:hover .experience-card-content {
+    transform: translateY(0);
+}
+
+.experience-badge {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: var(--accent);
+    color: var(--navy);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+/* Sensory Detail Layouts */
+.sensory-process-box {
+    background: white;
+    border-left: 8px solid var(--accent);
+    padding: 2.5rem;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.quote-parchment {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #5d4037;
+    position: relative;
+    padding: 0 2.5rem;
+    line-height: 1.8;
+}
+
+.quote-parchment::before {
+    content: '"';
+    position: absolute;
+    left: -10px;
+    top: -20px;
+    font-size: 6rem;
+    opacity: 0.1;
+    font-family: serif;
+    color: var(--accent);
+}
