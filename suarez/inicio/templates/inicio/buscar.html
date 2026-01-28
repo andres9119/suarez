@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultados de búsqueda - Alcaldía de Suárez{% endblock %}
+
+
+{% block meta_description %}Busca noticias, documentos, comunidades y experiencias cafeteras en el portal de la Alcaldía
+de Suárez, Cauca. Tu información municipal al alcance.{% endblock %}
+
+{% block content %}
+<div class="hero-institution animate-fade" style="min-height: 35vh; padding: 100px 0 40px;">
+    <div class="container text-center text-white">
+        <h1 class="display-4 fw-bold mb-3">Búsqueda en el Portal</h1>
+        <p class="lead opacity-90">Resultados para: <span class="fw-bold text-accent">"{{ query }}"</span></p>
+    </div>
+</div>
+
+<div class="container-fluid bg-pattern-grid py-5 position-relative" style="background-color: var(--light);">
+    <div class="bg-texture-culture"></div>
+    <div class="container mb-5">
+        {% if total_resultados == 0 %}
+        <div class="text-center py-5">
+            <div class="bg-white p-5 rounded-5 shadow-premium d-inline-block position-relative">
+                <div class="ornament-cafe mx-auto mb-4" style="width: 120px; height: 120px;"></div>
+                <i class="bi bi-search display-3 text-muted opacity-25 mb-4 d-block" style="margin-top: -60px;"></i>
+                <h3>No encontramos resultados para tu búsqueda</h3>
+                <p class="text-muted">Intenta con otras palabras clave relacionadas con trámites, noticias o café.</p>
+                <a href="{% url 'inicio:home' %}" class="btn btn-primary rounded-pill px-5 mt-4">Volver al Inicio</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-lg-10 mx-auto glass-card p-4 p-lg-5 shadow-premium">
+                <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-4 flex-wrap gap-3">
+                    <p class="mb-0 text-muted">Hemos encontrado <span class="text-primary fw-bold lead">{{
+                            total_resultados }}</span> resultados.</p>
+
+                    <div class="btn-group" role="group" aria-label="Filtros de búsqueda">
+                        <a href="?q={{ query }}&type=all"
+                            class="btn btn-outline-primary btn-sm {% if filter_type == 'all' %}active{% endif %}">Todos</a>
+                        <a href="?q={{ query }}&type=noticias"
+                            class="btn btn-outline-primary btn-sm {% if filter_type == 'noticias' %}active{% endif %}">Noticias</a>
+                        <a href="?q={{ query }}&type=experiencias"
+                            class="btn btn-outline-primary btn-sm {% if filter_type == 'experiencias' %}active{% endif %}">Experiencias</a>
+                        <a href="?q={{ query }}&type=comunidades"
+                            class="btn btn-outline-primary btn-sm {% if filter_type == 'comunidades' %}active{% endif %}">Comunidades</a>
+                        <a href="?q={{ query }}&type=documentos"
+                            class="btn btn-outline-primary btn-sm {% if filter_type == 'documentos' %}active{% endif %}">Documentos</a>
+                    </div>
+                </div>
+
+                <!-- Category: Noticias -->
+                {% if noticias %}
+                <div class="mb-5">
+                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
+                            class="bi bi-newspaper me-2 text-primary"></i>Noticias y Eventos</h4>
+                    {% for item in noticias %}
+                    <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold mb-1">{{ item.titulo }}</h5>
+                                <p class="small text-muted mb-0">{{ item.contenido|truncatewords:20 }}</p>
+                            </div>
+                            <a href="{% url 'noticias:detalle' item.slug %}"
+                                class="btn btn-outline-primary btn-sm rounded-pill ms-3">Ver más</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Category: Café -->
+                {% if experiencias %}
+                <div class="mb-5">
+                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
+                            class="bi bi-cup-hot-fill me-2 text-primary"></i>Experiencias Cafeteras</h4>
+                    {% for item in experiencias %}
+                    <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold mb-1">{{ item.titulo }}</h5>
+                                <p class="small text-muted mb-0">{{ item.historia|truncatewords:20 }}</p>
+                            </div>
+                            <a href="{% url 'experiencias_cafeteras:detalle' item.pk %}"
+                                class="btn btn-outline-primary btn-sm rounded-pill ms-3">Ver más</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Category: Comunidades -->
+                {% if comunidades %}
+                <div class="mb-5">
+                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
+                            class="bi bi-people-fill me-2 text-primary"></i>Nuestras Comunidades</h4>
+                    {% for item in comunidades %}
+                    <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold mb-1">{{ item.nombre }}</h5>
+                                <p class="small text-muted mb-0">{{ item.resena_cultural|truncatewords:20 }}</p>
+                            </div>
+                            <a href="{% url 'comunidades:detalle' item.pk %}"
+                                class="btn btn-outline-primary btn-sm rounded-pill ms-3">Ver más</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Category: Documentos -->
+                {% if documentos %}
+                <div class="mb-5">
+                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
+                            class="bi bi-file-earmark-pdf-fill me-2 text-primary"></i>Documentos Públicos</h4>
+                    {% for item in documentos %}
+                    <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold mb-1">{{ item.titulo }}</h5>
+                                <span class="badge bg-primary-soft text-primary rounded-pill small">{{
+                                    item.categoria.nombre
+                                    }}</span>
+                            </div>
+                            <a href="{{ item.archivo.url }}" class="btn btn-primary btn-sm rounded-pill ms-3"
+                                download><i class="bi bi-download"></i></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

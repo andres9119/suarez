@@ -2,48 +2,104 @@
 
 {% block title %}Documentos Públicos - Alcaldía de Suárez{% endblock %}
 
-{% block content %}
-<h1 class="mb-4 text-primary">Transparencia: Documentos Públicos</h1>
+{% block meta_description %}Accede a documentos públicos oficiales de Suárez, Cauca. Decretos, resoluciones, acuerdos y
+normativas municipales. Transparencia y acceso a la información.{% endblock %}
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="list-group shadow-sm">
-            <a href="#" class="list-group-item list-group-item-action active"
-                style="background-color: #004a2f; border: none;">Todas las Categorías</a>
-            {% for cat in categorias %}
-            <a href="#" class="list-group-item list-group-item-action">{{ cat.nombre }}</a>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="col-md-9">
-        <div class="table-responsive bg-white p-3 rounded shadow-sm">
-            <table class="table table-hover align-middle">
-                <thead class="table-light">
-                    <tr>
-                        <th>Título</th>
-                        <th>Categoría</th>
-                        <th>Fecha</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for doc in documentos %}
-                    <tr>
-                        <td><strong>{{ doc.titulo }}</strong></td>
-                        <td><span class="badge bg-light text-dark border">{{ doc.categoria.nombre }}</span></td>
-                        <td>{{ doc.fecha_subida|date:"d/m/Y" }}</td>
-                        <td>
-                            <a href="{{ doc.archivo.url }}" class="btn btn-sm btn-primary" download>Descargar</a>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="4" class="text-center">No hay documentos disponibles.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+{% block content %}
+<div class="hero-institution animate-fade" style="min-height: 40vh; padding: 100px 0 60px;">
+    <div class="container text-center text-white">
+        <span
+            class="badge bg-accent text-navy mb-4 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Transparencia</span>
+        <h1 class="display-3 fw-bold mb-3">Documentos Públicos</h1>
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
+                        class="text-white text-decoration-none opacity-75 hover-accent">Inicio</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Documentos</li>
+            </ol>
+        </nav>
+
+        <p class="lead opacity-90 col-md-8 mx-auto">Accede a la información oficial, decretos y resoluciones de tu
+            municipio de manera clara y directa.</p>
     </div>
 </div>
-{% endblock %}
+
+<div class="bg-documentos py-5">
+    <div class="container section-padding">
+        <div class="row g-5">
+            <div class="col-lg-3">
+                <h5 class="fw-bold mb-4 text-navy">Categorías</h5>
+                <div class="list-group list-group-flush shadow-premium rounded-4 overflow-hidden border-0">
+                    <a href="{% url 'documentos:lista' %}"
+                        class="list-group-item list-group-item-action p-3 fw-bold {% if not categoria_activa %}active{% endif %}"
+                        style="{% if not categoria_activa %}background-color: var(--primary); border: none;{% else %}transition: var(--transition);{% endif %}">Todas
+                        las Categorías</a>
+                    {% for cat in categorias %}
+                    <a href="?categoria={{ cat.id }}"
+                        class="list-group-item list-group-item-action p-3 border-0 transition-hover {% if categoria_activa == cat.id %}active fw-bold{% endif %}"
+                        style="{% if categoria_activa == cat.id %}background-color: var(--primary); border: none;{% else %}transition: var(--transition);{% endif %}">{{
+                        cat.nombre }}</a>
+                    {% endfor %}
+                </div>
+
+                <div class="mt-5 p-4 bg-primary-soft rounded-4 border border-white shadow-sm">
+                    <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-info-circle me-2"></i>¿Buscas algo más?</h6>
+                    <p class="small text-muted mb-0">Si no encuentras lo que buscas, puedes contactar con la oficina de
+                        planeación municipal.</p>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="table-responsive bg-white p-4 p-xl-5 rounded-5 shadow-premium">
+                    <table class="table table-hover align-middle border-0">
+                        <thead>
+                            <tr class="text-uppercase small fw-bold text-muted" style="letter-spacing: 1px;">
+                                <th class="border-0 pb-4">Documento</th>
+                                <th class="border-0 pb-4">Categoría</th>
+                                <th class="border-0 pb-4">Fecha</th>
+                                <th class="border-0 pb-4 text-end">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border-top-0">
+                            {% for doc in documentos %}
+                            <tr class="border-bottom" style="border-color: rgba(0,0,0,0.03) !important;">
+                                <td class="py-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary-soft text-primary p-2 rounded-3 me-3">
+                                            <i class="bi bi-file-earmark-pdf fs-4"></i>
+                                        </div>
+                                        <span class="fw-bold text-navy h6 mb-0">{{ doc.titulo }}</span>
+                                    </div>
+                                </td>
+                                <td class="py-4">
+                                    <span
+                                        class="badge bg-light text-primary border border-primary-subtle px-3 py-2 rounded-pill small fw-bold">{{
+                                        doc.categoria.nombre }}</span>
+                                </td>
+                                <td class="py-4 text-muted small">
+                                    {{ doc.fecha_subida|date:"d M, Y" }}
+                                </td>
+                                <td class="py-4 text-end">
+                                    <a href="{{ doc.archivo.url }}"
+                                        class="btn btn-outline-primary rounded-pill px-4 fw-bold btn-sm shadow-sm transition-hover"
+                                        download>
+                                        <i class="bi bi-download me-2"></i>Descargar
+                                    </a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center py-5">
+                                    <i class="bi bi-folder2-open display-4 text-muted opacity-25 d-block mb-3"></i>
+                                    <p class="text-muted">No hay documentos disponibles en esta sección.</p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

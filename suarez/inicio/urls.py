@@ -5,4 +5,5 @@ app_name = 'inicio'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('buscar/', views.buscar, name='buscar'),
 ]

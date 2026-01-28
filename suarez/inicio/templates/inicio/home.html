@@ -4,39 +4,47 @@
 
 {% block title %}Inicio - Alcaldía de Suárez{% endblock %}
 
+{% block meta_description %}Alcaldía Municipal de Suárez, Cauca. Portal oficial con noticias, trámites en línea,
+transparencia, documentos públicos y la riqueza cultural de nuestro territorio cafetero. Gestión al servicio de la
+comunidad.{% endblock %}
+
 {% block content %}
 <!-- Banner Hero Dinámico -->
 <section class="hero-institution animate-fade" {% if banner.imagen_fondo %}
-    style="--hero-bg: url('{{ banner.imagen_fondo.url }}'); padding: 120px 0 80px;" {% endif %}>
-    <div class="container hero-content text-center">
+    style="--hero-bg: url('{{ banner.imagen_fondo.url }}'); padding: 150px 0 100px;" {% endif %}>
+    <div class="container hero-content text-center position-relative z-2">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <h1 class="display-3 fw-bold mb-4">
+                <span
+                    class="badge bg-accent text-navy mb-4 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Portal
+                    Oficial</span>
+                <h1 class="display-2 fw-bold mb-4 text-white">
                     {% if banner %}
                     {{ banner.titulo }}
                     {% else %}
                     Bienvenidos a <span style="color: var(--accent);">Suárez</span>
                     {% endif %}
                 </h1>
-                <p class="lead fs-4 opacity-90 mb-5 text-white">
+                <p class="lead fs-4 opacity-90 mb-5 text-white col-md-8 mx-auto">
                     {% if banner %}
                     {{ banner.subtitulo }}
                     {% else %}
-                    Portal Institucional de la Alcaldía Municipal.
+                    Tierra de paz, cultura y el aroma inigualable de nuestro café. Conoce la gestión de tu Alcaldía
+                    Municipal.
                     {% endif %}
                 </p>
-                <div class="d-flex gap-3 justify-content-center">
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
                     {% if banner %}
                     <a href="{{ banner.link_boton }}" class="btn-premium text-decoration-none">
-                        {{ banner.texto_boton }}
+                        {{ banner.texto_boton }} <i class="bi bi-chevron-right ms-2"></i>
                     </a>
                     {% else %}
                     <a href="{% url 'noticias:lista' %}" class="btn-premium text-decoration-none">
-                        Ver Noticias
+                        Ver Actualidad <i class="bi bi-newspaper ms-2"></i>
                     </a>
                     {% endif %}
                     <a href="{% url 'contacto:index' %}"
-                        class="btn btn-outline-light btn-lg rounded-pill px-5">Contactar</a>
+                        class="btn btn-outline-light btn-lg rounded-pill px-5 border-2 fw-bold">Contactar</a>
                 </div>
             </div>
         </div>
@@ -44,103 +52,121 @@
 </section>
 
 <!-- Sección: Cifras -->
-<section class="section-padding section-alt shadow-sm">
+<section class="section-padding bg-pattern-dots" style="background-color: var(--primary-soft);">
     <div class="container">
         <header class="mb-5 text-center">
-            <h2 class="section-title mx-auto" style="display: table;">Suárez en Cifras</h2>
+            <h2 class="section-title">Suárez en Cifras</h2>
         </header>
         <div class="row g-4 text-center">
             <div class="col-6 col-md-3">
-                <div class="stat-card border-0 bg-transparent shadow-none">
-                    <span class="stat-value text-dark">1,050</span>
+                <div class="stat-card">
+                    <i class="bi bi-geo-alt fs-2 text-accent mb-3 d-block"></i>
+                    <span class="stat-value">1,050</span>
                     <span class="stat-label">msnm</span>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-card border-0 bg-transparent shadow-none">
-                    <span class="stat-value text-dark">22,000+</span>
+                <div class="stat-card">
+                    <i class="bi bi-people fs-2 text-accent mb-3 d-block"></i>
+                    <span class="stat-value">22k+</span>
                     <span class="stat-label">Habitantes</span>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-card border-0 bg-transparent shadow-none">
-                    <span class="stat-value text-dark">158</span>
+                <div class="stat-card">
+                    <i class="bi bi-calendar-check fs-2 text-accent mb-3 d-block"></i>
+                    <span class="stat-value">158</span>
                     <span class="stat-label">Años</span>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-card border-0 bg-transparent shadow-none">
-                    <span class="stat-value text-dark">100%</span>
-                    <span class="stat-label">Cauca</span>
+                <div class="stat-card">
+                    <i class="bi bi-map fs-2 text-accent mb-3 d-block"></i>
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Caucano</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Decorative Spacer -->
+<section class="bg-amanecer py-5 text-center shadow-lg" style="min-height: 50vh; display: flex; align-items: center;">
+    <div class="container py-5">
+        <h2 class="display-4 fw-bold mb-3">Tierra de Paz y Café</h2>
+        <p class="lead fs-3 opacity-90 mx-auto col-md-8">Un paraíso escondido entre las montañas del Cauca.</p>
+    </div>
+</section>
+
 <!-- Sección: Eventos -->
-<section class="section-padding">
+<section class="section-padding bg-pattern-grid">
     <div class="container">
-        <header class="mb-5">
+        <header class="mb-5 text-center">
             <h2 class="section-title">Actualidad y Compromiso</h2>
+            <p class="text-muted col-md-6 mx-auto">Sigue de cerca las acciones y eventos que marcan el rumbo de nuestro
+                municipio.</p>
         </header>
 
         {% for evento in eventos %}
         <div class="row row-alternate g-5 mb-5 align-items-center">
             <div class="col-lg-6">
-                <div class="rounded-5 overflow-hidden shadow-lg">
+                <div class="rounded-5 overflow-hidden shadow-premium">
                     {% if evento.imagen %}
                     <img src="{{ evento.imagen.url }}" class="img-fluid w-100" alt="{{ evento.titulo }}"
-                        style="height: 400px; object-fit: cover;">
+                        style="height: 450px; object-fit: cover; transition: transform 0.5s ease;" loading="lazy">
                     {% else %}
-                    <div class="bg-secondary w-100" style="height: 400px;"></div>
+                    <div class="bg-secondary w-100" style="height: 450px;"></div>
                     {% endif %}
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="ps-lg-4">
-                    <div class="text-primary fw-bold mb-2 fs-5">{{ evento.fecha_evento }}</div>
-                    <h3 class="fw-bold mb-3 display-6">{{ evento.titulo }}</h3>
-                    <p class="text-muted fs-5 mb-4 leading-relaxed">{{ evento.descripcion }}</p>
+                <div class="ps-lg-5 glass-card p-4 p-lg-5">
+                    <div class="badge bg-primary-soft text-primary fw-bold mb-3 px-3 py-2 rounded-pill shadow-sm">
+                        <i class="bi bi-calendar-event me-2"></i>{{ evento.fecha_evento }}
+                    </div>
+                    <h3 class="fw-bold mb-4 display-6">{{ evento.titulo }}</h3>
+                    <p class="text-muted fs-5 mb-5 leading-relaxed">{{ evento.descripcion }}</p>
                     {% if evento.link %}
-                    <a href="{{ evento.link }}" class="btn-premium text-decoration-none d-inline-block">Conoce más
-                        detalles</a>
+                    <a href="{{ evento.link }}"
+                        class="btn btn-outline-primary btn-lg rounded-pill px-5 fw-bold border-2">
+                        Conoce más detalles <i class="bi bi-plus-lg ms-2"></i>
+                    </a>
                     {% endif %}
                 </div>
             </div>
         </div>
         {% empty %}
-        <p class="text-center text-muted">No hay eventos destacados.</p>
+        <div class="text-center py-5">
+            <i class="bi bi-journal-text display-1 text-muted opacity-25 mb-4"></i>
+            <p class="text-muted fs-5">No hay eventos destacados en este momento.</p>
+        </div>
         {% endfor %}
     </div>
 </section>
 
 <!-- Sección: Videos -->
-<section class="section-padding section-alt shadow-inner">
+<section class="section-padding section-alt">
     <div class="container">
         <header class="mb-5 text-center">
-            <h2 class="section-title mx-auto" style="display: table;">Canal Institucional</h2>
-            <p class="text-muted mt-2 small">Si algún video no carga, intenta usar el botón de "Ver en YouTube".</p>
+            <h2 class="section-title">Canal Institucional</h2>
+            <p class="text-muted mt-3">Comunicación directa con la comunidad a través de video.</p>
         </header>
         <div class="row g-5 justify-content-center">
             {% for video in videos %}
             <div class="col-lg-10 col-xl-8">
-                <div class="video-item mb-5">
-                    <div class="ratio ratio-16x9 shadow-lg rounded-5 overflow-hidden bg-black">
+                <div class="video-item mb-5 p-4 bg-white rounded-5 shadow-premium">
+                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm bg-black">
                         <iframe src="{{ video.url_embebida|youtube_embed }}" title="{{ video.titulo }}"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="no-referrer-when-downgrade" frameborder="0" allowfullscreen>
                         </iframe>
                     </div>
                     <div class="text-center mt-4">
-                        <h4 class="fw-bold text-dark mb-3">{{ video.titulo }}</h4>
-                        <div class="d-flex justify-content-center gap-2">
-                            <div
-                                style="width: 40px; height: 3px; background: var(--accent); border-radius: 2px; align-self: center;">
-                            </div>
+                        <h4 class="fw-bold text-navy mb-4">{{ video.titulo }}</h4>
+                        <div class="d-flex justify-content-center">
                             <a href="{{ video.url_embebida }}" target="_blank"
-                                class="btn btn-sm btn-outline-danger rounded-pill px-3">
-                                <i class="bi bi-youtube me-2"></i>Ver en YouTube
+                                class="btn btn-danger btn-lg rounded-pill px-4 shadow-sm fw-bold">
+                                <i class="bi bi-youtube me-2"></i>Abrir en YouTube
                             </a>
                         </div>
                     </div>
@@ -151,29 +177,30 @@
     </div>
 </section>
 
-<!-- Sección: Galería (Arquitectura Native Grouped) -->
+<!-- Sección: Galería -->
 <section class="section-padding">
     <div class="container">
         <header class="mb-5 text-center">
-            <h2 class="section-title mx-auto" style="display: table;">Suárez en Imágenes</h2>
-            <p class="text-muted">Desliza para ver más de nuestro municipio</p>
+            <h2 class="section-title">Suárez en Imágenes</h2>
+            <p class="text-muted">Un recorrido visual por la belleza de nuestra geografía y su gente.</p>
         </header>
 
         {% if imagenes %}
-        <div id="galleryCarousel" class="carousel slide" data-bs-ride="false">
-            <div class="carousel-inner px-4">
+        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
                 {% for img in imagenes %}
                 {% if forloop.counter0|divisibleby:3 %}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
                     <div class="carousel-gallery-row">
                         {% endif %}
 
                         <div class="carousel-gallery-item">
-                            <div class="gallery-item-wrapper">
-                                <img src="{{ img.imagen.url }}" class="gallery-img" alt="{{ img.titulo }}">
+                            <div class="gallery-item-wrapper shadow-premium">
+                                <img src="{{ img.imagen.url }}" class="gallery-img" alt="{{ img.titulo }}"
+                                    loading="lazy">
                                 {% if img.titulo %}
-                                <div class="gallery-caption-overlay">
-                                    <h5 class="fw-bold mb-0 text-white">{{ img.titulo }}</h5>
+                                <div class="gallery-caption-overlay text-center">
+                                    <h5 class="fw-bold mb-0 text-white fs-4">{{ img.titulo }}</h5>
                                 </div>
                                 {% endif %}
                             </div>

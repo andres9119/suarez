@@ -2,40 +2,60 @@
 
 {% block title %}Noticias y Eventos - Alcaldía de Suárez{% endblock %}
 
+{% block meta_description %}Últimas noticias oficiales y eventos de Suárez, Cauca. Mantente informado sobre proyectos,
+comunicados y actividades de la Alcaldía Municipal.{% endblock %}
+
 {% block content %}
-<div class="hero-institution mb-5">
+<div class="hero-institution animate-fade bg-suarez-hero" style="min-height: 40vh; padding: 120px 0 80px;">
     <div class="container text-center">
-        <h1 class="display-4 fw-bold animate-fade">Noticias y Eventos</h1>
-        <p class="lead opacity-75">Entérate de todo lo que sucede en nuestro municipio.</p>
+        <span
+            class="badge bg-accent text-navy mb-4 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Actualidad</span>
+        <h1 class="display-3 fw-bold mb-3">Noticias y Actualidad</h1>
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
+                        class="text-white text-decoration-none opacity-75 hover-accent">Inicio</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Noticias</li>
+            </ol>
+        </nav>
+
+        <p class="lead opacity-90 col-md-8 mx-auto">Mantente informado de las últimas novedades y gestión de nuestra
+            administración municipal.</p>
     </div>
 </div>
 
-<div class="container mb-5">
-
-    <div class="row g-4">
+<div class="container section-padding bg-pattern-dots">
+    <div class="row g-5">
         {% for noticia in noticias %}
-        <div class="col-md-6">
-            <div class="card card-premium mb-3 h-100 border-0">
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-premium rounded-5 overflow-hidden transition-hover"
+                style="transition: var(--transition);">
                 <div class="row g-0 h-100">
                     <div class="col-md-5">
                         <img src="{{ noticia.imagen_destacada.url }}" class="img-fluid h-100"
-                            style="object-fit: cover; min-height: 200px;" alt="{{ noticia.titulo }}">
+                            style="object-fit: cover; min-height: 250px;" alt="{{ noticia.titulo }}" loading="lazy">
                     </div>
                     <div class="col-md-7">
-                        <div class="card-body p-4 d-flex flex-column h-100">
-                            <div class="mb-2">
+                        <div class="card-body p-4 p-xl-5 d-flex flex-column h-100">
+                            <div class="mb-3">
                                 <span
-                                    class="badge {% if noticia.es_evento %}bg-warning text-dark{% else %}bg-info text-dark{% endif %}">
+                                    class="badge {% if noticia.es_evento %}bg-accent text-navy{% else %}bg-primary-soft text-primary{% endif %} px-3 py-2 rounded-pill fw-bold small">
+                                    <i
+                                        class="bi {% if noticia.es_evento %}bi-calendar-event{% else %}bi-newspaper{% endif %} me-2"></i>
                                     {% if noticia.es_evento %}Evento{% else %}Noticia{% endif %}
                                 </span>
                             </div>
-                            <h5 class="card-title fw-bold">{{ noticia.titulo }}</h5>
-                            <p class="card-text text-muted small mb-3">{{ noticia.fecha_publicacion|date:"d M, Y" }}</p>
-                            <p class="card-text mb-4">{{ noticia.contenido|truncatewords:12 }}</p>
-                            <div class="mt-auto">
+                            <h4 class="fw-bold mb-2">{{ noticia.titulo }}</h4>
+                            <p class="text-muted small mb-4"><i class="bi bi-calendar3 me-2"></i>{{
+                                noticia.fecha_publicacion|date:"d M, Y" }}</p>
+                            <p class="text-muted mb-4">{{ noticia.contenido|truncatewords:15 }}</p>
+                            <div class="mt-auto pt-3 border-top">
                                 <a href="{% url 'noticias:detalle' noticia.slug %}"
-                                    class="btn btn-link text-primary p-0 text-decoration-none fw-bold">Leer noticia
-                                    completa &rarr;</a>
+                                    class="btn btn-link text-primary p-0 text-decoration-none fw-bold d-inline-flex align-items-center">
+                                    Seguir leyendo <i class="bi bi-arrow-right ms-2 transition-icon"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -44,8 +64,12 @@
         </div>
         {% empty %}
         <div class="col-12 text-center py-5">
-            <p class="text-muted">No hay noticias publicadas en este momento.</p>
+            <div class="bg-white p-5 rounded-5 shadow-sm d-inline-block">
+                <i class="bi bi-journal-text display-1 text-muted opacity-25 mb-4 d-block"></i>
+                <h3 class="text-muted">No hay noticias publicadas en este momento.</h3>
+            </div>
         </div>
         {% endfor %}
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

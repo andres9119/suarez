@@ -1,53 +1,80 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Nuestras Comunidades - Alcaldía de Suárez{% endblock %}
 
+{% block meta_description %}Conoce las comunidades afrodescendientes e indígenas de Suárez, Cauca. Riqueza cultural,
+tradiciones ancestrales y el patrimonio social que hace único a nuestro municipio.{% endblock %}
+
 {% block content %}
-<div class="hero-institution mb-5 animate-fade">
+<div class="hero-institution animate-fade bg-comunidades-hero" style="min-height: 40vh; padding: 120px 0 80px;">
     <div class="container text-center">
-        <h1 class="display-4 fw-bold">Nuestras Comunidades</h1>
-        <p class="lead opacity-75">Reseñas culturales de los habitantes de Suárez.</p>
+        <span class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Nuestra
+            Gente</span>
+        <h1 class="display-3 fw-bold text-white mb-3">Nuestras Comunidades</h1>
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
+                        class="text-white text-decoration-none opacity-75 hover-accent">Inicio</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Comunidades</li>
+            </ol>
+        </nav>
+
+        <p class="lead text-white opacity-90 col-md-8 mx-auto">Conoce la riqueza cultural y social de los habitantes que
+            hacen de Suárez un territorio único.</p>
     </div>
 </div>
 
-<div class="container mb-5">
-    <div class="row g-4">
-        {% for comunidad in comunidades %}
-        <div class="col-md-4">
-            <div class="card card-premium h-100 text-center border-0 p-4">
-                <div class="card-body d-flex flex-column">
-                    {% if comunidad.logo_o_emblema %}
-                    <div class="mb-4">
-                        <img src="{{ comunidad.logo_o_emblema.url }}" class="rounded-circle shadow-sm"
-                            style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--secondary);"
-                            alt="{{ comunidad.nombre }}">
-                    </div>
-                    {% endif %}
+<div class="py-5"
+    style="background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('{% static 'img/indigenas.jpg' %}'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <div class="container section-padding">
+        <div class="row g-4 justify-content-center">
+            {% for comunidad in comunidades %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 text-center border-0 shadow-premium rounded-5 p-4 p-xl-5 transition-hover"
+                    style="transition: var(--transition); background: var(--white);">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        {% if comunidad.logo_o_emblema %}
+                        <div class="mb-4">
+                            <div class="rounded-circle overflow-hidden shadow-sm"
+                                style="width: 140px; height: 140px; border: 4px solid var(--primary-soft);">
+                                <img src="{{ comunidad.logo_o_emblema.url }}" class="w-100 h-100"
+                                    style="object-fit: cover;" alt="{{ comunidad.nombre }}" loading="lazy">
+                            </div>
+                        </div>
+                        {% endif %}
 
-                    <h5 class="card-title fw-bold mb-2">{{ comunidad.nombre }}</h5>
+                        <h4 class="fw-bold mb-3">{{ comunidad.nombre }}</h4>
 
-                    <div class="mb-3">
-                        <span class="badge bg-light text-success border border-success-subtle px-3 py-2 rounded-pill">
-                            {{ comunidad.get_tipo_display }}
-                        </span>
-                    </div>
+                        <div class="mb-4">
+                            <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill fw-bold small">
+                                <i class="bi bi-tag-fill me-2"></i>{{ comunidad.get_tipo_display }}
+                            </span>
+                        </div>
 
-                    <p class="card-text text-muted small mb-4">
-                        {{ comunidad.resena_cultural|truncatewords:18 }}
-                    </p>
+                        <p class="text-muted mb-5 px-3">
+                            {{ comunidad.resena_cultural|truncatewords:20 }}
+                        </p>
 
-                    <div class="mt-auto">
-                        <a href="{% url 'comunidades:detalle' comunidad.pk %}"
-                            class="btn-premium text-decoration-none d-inline-block">Conocer más</a>
+                        <div class="mt-auto">
+                            <a href="{% url 'comunidades:detalle' comunidad.pk %}"
+                                class="btn-premium text-decoration-none d-inline-block px-5">Explorar <i
+                                    class="bi bi-chevron-right ms-2"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <div class="bg-white p-5 rounded-5 shadow-sm d-inline-block">
+                    <i class="bi bi-people display-1 text-muted opacity-25 mb-4 d-block"></i>
+                    <h3 class="text-muted">Próximamente estaremos publicando información sobre nuestras comunidades.
+                    </h3>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% empty %}
-        <div class="col-12 text-center py-5">
-            <p class="text-muted">Próximamente estaremos publicando información sobre nuestras comunidades.</p>
-        </div>
-        {% endfor %}
     </div>
-</div>
-{% endblock %}
+    {% endblock %}

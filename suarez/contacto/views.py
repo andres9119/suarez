@@ -43,6 +43,27 @@ def contacto(request):
                     recipient_list=[settings.CONTACT_EMAIL],
                     fail_silently=False,
                 )
+                
+                # 3. Enviar Confirmación Automática al Usuario
+                cuerpo_confirmacion = f"""
+                Hola {nombre},
+                
+                Hemos recibido tu mensaje con el asunto "{asunto}".
+                
+                Gracias por ponerte en contacto con la Alcaldía de Suárez. 
+                Nuestro equipo revisará tu solicitud y te responderemos a la brevedad posible.
+                
+                Atentamente,
+                Alcaldía Municipal de Suárez - Cauca
+                """
+                
+                send_mail(
+                    subject="Confirmación de Recibido - Alcaldía de Suárez",
+                    message=cuerpo_confirmacion,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=True, # Si falla la confirmación, no es crítico
+                )
             except Exception as e:
                 # Si el correo falla, registramos el error pero no bloqueamos la experiencia del usuario
                 # ya que el mensaje ya quedó guardado en la Base de Datos.

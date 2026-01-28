@@ -21,7 +21,7 @@
                 {% if comunidad.logo_o_emblema %}
                 <img src="{{ comunidad.logo_o_emblema.url }}"
                     class="rounded-circle shadow-lg border border-3 border-white mb-3"
-                    style="width: 150px; height: 150px; object-fit: cover;" alt="{{ comunidad.nombre }}">
+                    style="width: 150px; height: 150px; object-fit: cover;" alt="{{ comunidad.nombre }}" loading="lazy">
                 {% endif %}
             </div>
             <div class="col-md-10">
@@ -62,7 +62,7 @@
                         {% for img in comunidad.imagenes.all %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <img src="{{ img.imagen.url }}" class="d-block w-100"
-                                style="height: 450px; object-fit: cover;" alt="{{ img.descripcion }}">
+                                style="height: 450px; object-fit: cover;" alt="{{ img.descripcion }}" loading="lazy">
                             {% if img.descripcion %}
                             <div class="carousel-caption d-none d-md-block"
                                 style="background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border-radius: 10px;">
@@ -94,7 +94,7 @@
                             class="img-fluid rounded cursor-pointer opacity-75 hover-opacity-100"
                             style="height: 60px; width: 100%; object-fit: cover; cursor: pointer;"
                             data-bs-target="#communityCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
-                            alt="Thumbnail">
+                            alt="Thumbnail" loading="lazy">
                     </div>
                     {% endfor %}
                 </div>
@@ -134,4 +134,28 @@
         background-color: var(--accent) !important;
     }
 </style>
+
+<!-- Breadcrumb Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Inicio",
+    "item": "{{ request.scheme }}://{{ request.get_host }}/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Comunidades",
+    "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'comunidades:lista' %}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ comunidad.nombre|escapejs }}",
+    "item": "{{ request.build_absolute_uri }}"
+  }]
+}
+</script>
 {% endblock %}

@@ -2,100 +2,148 @@
 
 {% block title %}Contacto - Alcaldía de Suárez{% endblock %}
 
+{% block meta_description %}Ponte en contacto con la Alcaldía de Suárez, Cauca. Atención al ciudadano, PQRs, horarios y
+canales oficiales de comunicación. Estamos para servirte.{% endblock %}
+
 {% block content %}
-<div class="container py-5">
-    <div class="animate-fade">
-        <header class="mb-5 text-center">
-            <h1 class="display-4 fw-bold section-title">Ponte en Contacto</h1>
-            <p class="text-muted fs-5">Estamos aquí para escucharte y servirte</p>
-        </header>
+<div class="hero-institution animate-fade" style="min-height: 40vh; padding: 100px 0 60px;">
+    <div class="container text-center text-white">
+        <span
+            class="badge bg-accent text-navy mb-4 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Atención</span>
+        <h1 class="display-3 fw-bold mb-3">Ponte en Contacto</h1>
+        <p class="lead opacity-90 col-md-8 mx-auto">Estamos aquí para escucharte y servirte. Tu opinión y necesidades
+            son nuestra prioridad para construir un mejor Suárez.</p>
+    </div>
+</div>
 
-        <div class="row g-5">
-            <!-- Form Column -->
-            <div class="col-lg-7">
-                <div class="card card-premium p-4 p-md-5">
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show rounded-4" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
+<div class="bg-contacto py-5">
+    <div class="container section-padding">
+        <div class="animate-fade">
+            <div class="row g-5">
+                <!-- Form Column -->
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-premium p-4 p-md-5 rounded-5 h-100">
+                        <h3 class="fw-bold mb-5 text-navy">Escríbenos</h3>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show rounded-4 shadow-sm mb-4"
+                            role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
 
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="mb-4">
-                            <label for="nombre" class="form-label fw-bold">Nombre Completo</label>
-                            <input type="text" class="form-control form-control-lg rounded-3" id="nombre" name="nombre"
-                                placeholder="Tu nombre" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="form-label fw-bold">Correo Electrónico</label>
-                            <input type="email" class="form-control form-control-lg rounded-3" id="email" name="email"
-                                placeholder="email@ejemplo.com" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="asunto" class="form-label fw-bold">Asunto</label>
-                            <input type="text" class="form-control form-control-lg rounded-3" id="asunto" name="asunto"
-                                placeholder="Motivo de tu mensaje" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="mensaje" class="form-label fw-bold">Mensaje</label>
-                            <textarea class="form-control form-control-lg rounded-3" id="mensaje" name="mensaje"
-                                rows="5" placeholder="Escribe aquí tu mensaje..." required></textarea>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-premium">Enviar Mensaje <i
-                                    class="bi bi-send ms-2"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Info Column -->
-            <div class="col-lg-5">
-                <div class="card card-premium p-4 mb-4" style="background: var(--primary); color: var(--white);">
-                    <h3 class="fw-bold mb-4">Información de Contacto</h3>
-                    <div class="d-flex mb-4">
-                        <div class="bg-white bg-opacity-10 rounded-circle p-3 me-3">
-                            <i class="bi bi-geo-alt fs-4 text-warning"></i>
-                        </div>
-                        <div>
-                            <h5 class="mb-1">Dirección</h5>
-                            <p class="mb-0 opacity-75">Calle Principal, Palacio Municipal, Suárez - Cauca</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-4">
-                        <div class="bg-white bg-opacity-10 rounded-circle p-3 me-3">
-                            <i class="bi bi-envelope fs-4 text-warning"></i>
-                        </div>
-                        <div>
-                            <h5 class="mb-1">Correo Electrónico</h5>
-                            <p class="mb-0 opacity-75">atencionalciudadano@suarez-cauca.gov.co</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-0">
-                        <div class="bg-white bg-opacity-10 rounded-circle p-3 me-3">
-                            <i class="bi bi-clock fs-4 text-warning"></i>
-                        </div>
-                        <div>
-                            <h5 class="mb-1">Horario de Atención</h5>
-                            <p class="mb-0 opacity-75">Lun - Vie: 8:00 AM - 5:00 PM</p>
-                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label for="nombre"
+                                        class="form-label fw-bold small text-uppercase text-muted">Nombre
+                                        Completo</label>
+                                    <input type="text"
+                                        class="form-control form-control-lg rounded-4 border-0 bg-light p-3" id="nombre"
+                                        name="nombre" placeholder="Tu nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-bold small text-uppercase text-muted">Correo
+                                        Electrónico</label>
+                                    <input type="email"
+                                        class="form-control form-control-lg rounded-4 border-0 bg-light p-3" id="email"
+                                        name="email" placeholder="email@ejemplo.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="asunto"
+                                        class="form-label fw-bold small text-uppercase text-muted">Asunto</label>
+                                    <input type="text"
+                                        class="form-control form-control-lg rounded-4 border-0 bg-light p-3" id="asunto"
+                                        name="asunto" placeholder="Motivo de tu mensaje" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="mensaje"
+                                        class="form-label fw-bold small text-uppercase text-muted">Mensaje</label>
+                                    <textarea class="form-control form-control-lg rounded-4 border-0 bg-light p-3"
+                                        id="mensaje" name="mensaje" rows="5" placeholder="Escribe aquí tu mensaje..."
+                                        required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-premium w-100 py-3 mt-3">Enviar Mensaje <i
+                                            class="bi bi-send-fill ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-                <div class="card card-premium p-4">
-                    <h4 class="fw-bold mb-4" style="color: var(--primary);">Nuestras Redes</h4>
-                    <p class="text-muted mb-4">Síguenos en nuestras redes sociales para estar al tanto de todas las
-                        noticias y eventos.</p>
-                    <div class="social-links">
-                        <a href="https://facebook.com" target="_blank" class="instagram"><i
-                                class="bi bi-facebook"></i></a>
-                        <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter-x"></i></a>
-                        <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-                        <a href="https://youtube.com" target="_blank"><i class="bi bi-youtube"></i></a>
+                <!-- Info Column -->
+                <div class="col-lg-5">
+                    <div class="card border-0 shadow-premium p-4 p-md-5 mb-5 rounded-5 h-100"
+                        style="background: var(--navy); color: var(--white);">
+                        <h3 class="fw-bold mb-5">Canales de Atención</h3>
+                        <div class="d-flex mb-5">
+                            <div class="bg-white bg-opacity-10 rounded-4 p-3 me-3 d-flex align-items-center justify-content-center"
+                                style="width: 60px; height: 60px;">
+                                <i class="bi bi-geo-alt fs-3 text-accent"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-accent">Dirección</h6>
+                                <p class="mb-0 opacity-75 small">Palacio Municipal, Calle Principal<br>Suárez - Cauca,
+                                    Colombia</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-5">
+                            <div class="bg-white bg-opacity-10 rounded-4 p-3 me-3 d-flex align-items-center justify-content-center"
+                                style="width: 60px; height: 60px;">
+                                <i class="bi bi-envelope fs-3 text-accent"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-accent">Correo Electrónico</h6>
+                                <p class="mb-0 opacity-75 small">atencionalciudadano@suarez-cauca.gov.co</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-5">
+                            <div class="bg-white bg-opacity-10 rounded-4 p-3 me-3 d-flex align-items-center justify-content-center"
+                                style="width: 60px; height: 60px;">
+                                <i class="bi bi-clock fs-3 text-accent"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-accent">Horario de Atención</h6>
+                                <p class="mb-0 opacity-75 small">Lunes a Viernes<br>8:00 AM - 12:30 PM | 2:00 PM - 5:30
+                                    PM
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="border-white opacity-10 my-5">
+
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-white bg-opacity-10 rounded-4 p-3 me-3 d-flex align-items-center justify-content-center"
+                                style="width: 60px; height: 60px;">
+                                <i class="bi bi-share fs-3 text-accent"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0 text-white">Síguenos en Redes Sociales</h4>
+                        </div>
+                        <p class="text-white opacity-75 mb-4 small">Mantente informado de todas las noticias, eventos y
+                            gestión de la administración municipal a través de nuestros canales oficiales.</p>
+
+                        <div class="d-flex gap-3 mt-auto">
+                            <a href="https://www.facebook.com/alcaldiasuarezcauca" target="_blank"
+                                class="btn btn-icon-social rounded-circle bg-white bg-opacity-10 text-white hover-accent"
+                                style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a href="https://x.com/Suarez_cauca" target="_blank"
+                                class="btn btn-icon-social rounded-circle bg-white bg-opacity-10 text-white hover-accent"
+                                style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i
+                                    class="bi bi-twitter-x"></i></a>
+                            <a href="https://www.instagram.com/alcaldiadesuarez/?hl=es" target="_blank"
+                                class="btn btn-icon-social rounded-circle bg-white bg-opacity-10 text-white hover-accent"
+                                style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i
+                                    class="bi bi-instagram"></i></a>
+                            <a href="https://www.youtube.com/@suarezcauca9705" target="_blank"
+                                class="btn btn-icon-social rounded-circle bg-white bg-opacity-10 text-white hover-accent"
+                                style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i
+                                    class="bi bi-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
