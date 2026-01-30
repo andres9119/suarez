@@ -7,7 +7,8 @@ class ImagenComunidadInline(admin.TabularInline):
 
 @admin.register(Comunidad)
 class ComunidadAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'tipo')
+    list_display = ('nombre', 'slug', 'tipo')
     list_filter = ('tipo',)
-    search_fields = ('nombre', 'resena_cultural')
+    search_fields = ('nombre', 'resena_cultural', 'slug')
+    prepopulated_fields = {'slug': ('nombre',)}
     inlines = [ImagenComunidadInline]

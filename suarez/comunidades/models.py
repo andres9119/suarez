@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Comunidad(models.Model):
     TIPO_CHOICES = [
@@ -7,10 +8,16 @@ class Comunidad(models.Model):
         ('campesina', 'Campesina'),
     ]
     nombre = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=False, blank=True, null=True)
     tipo = models.CharField(max_length=20, choices=TIPO_CHOICES)
     resena_cultural = models.TextField()
     historia = models.TextField()
     logo_o_emblema = models.ImageField(upload_to='comunidades/logos/', blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nombre)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.nombre} ({self.get_tipo_display()})"

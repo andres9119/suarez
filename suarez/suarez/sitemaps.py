@@ -35,7 +35,7 @@ class ExperienciaSitemap(sitemaps.Sitemap):
         return ExperienciaCafetera.objects.all()
 
     def location(self, obj):
-        return reverse('experiencias_cafeteras:detalle', args=[obj.pk])
+        return reverse('experiencias_cafeteras:detalle', args=[obj.slug])
 
 class ComunidadSitemap(sitemaps.Sitemap):
     changefreq = "monthly"
@@ -45,4 +45,4 @@ class ComunidadSitemap(sitemaps.Sitemap):
         return Comunidad.objects.all()
 
     def location(self, obj):
-        return reverse('comunidades:detalle', args=[obj.pk])
+        return reverse('comunidades:detalle', args=[obj.slug])

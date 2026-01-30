@@ -28,7 +28,7 @@ tradiciones ancestrales y el patrimonio social que hace único a nuestro municip
 </div>
 
 <div class="py-5"
-    style="background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('{% static 'img/indigenas.jpg' %}'); background-size: cover; background-position: center; background-attachment: fixed;">
+    style="background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('{% static 'img/comunidadesfondo.jpg' %}'); background-size: cover; background-position: center; background-attachment: fixed;">
     <div class="container section-padding">
         <div class="row g-4 justify-content-center">
             {% for comunidad in comunidades %}
@@ -59,7 +59,7 @@ tradiciones ancestrales y el patrimonio social que hace único a nuestro municip
                         </p>
 
                         <div class="mt-auto">
-                            <a href="{% url 'comunidades:detalle' comunidad.pk %}"
+                            <a href="{% url 'comunidades:detalle' comunidad.slug %}"
                                 class="btn-premium text-decoration-none d-inline-block px-5">Explorar <i
                                     class="bi bi-chevron-right ms-2"></i></a>
                         </div>

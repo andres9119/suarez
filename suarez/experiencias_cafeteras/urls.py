@@ -5,5 +5,5 @@ app_name = 'experiencias_cafeteras'
 
 urlpatterns = [
     path('', views.lista_experiencias, name='lista'),
-    path('<int:pk>/', views.detalle_experiencia, name='detalle'),
+    path('<slug:slug>/', views.detalle_experiencia, name='detalle'),
 ]

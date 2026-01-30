@@ -5,6 +5,6 @@ def lista_comunidades(request):
     comunidades = Comunidad.objects.all()
     return render(request, 'comunidades/lista.html', {'comunidades': comunidades})
 
-def detalle_comunidad(request, pk):
-    comunidad = get_object_or_404(Comunidad, pk=pk)
+def detalle_comunidad(request, slug):
+    comunidad = get_object_or_404(Comunidad, slug=slug)
     return render(request, 'comunidades/detalle.html', {'comunidad': comunidad})

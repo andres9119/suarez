@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Error del Servidor (500) - Alcaldía de Suárez{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <img src="{% static 'img/escudo.png' %}" alt="Escudo de Suárez" class="mb-5" style="max-height: 150px;">
+                <h1 class="display-1 fw-bold text-primary mb-3">500</h1>
+                <h2 class="fw-bold mb-4">¡Oops! Algo salió mal en el servidor.</h2>
+                <p class="lead text-muted mb-5">
+                    Lamentamos los inconvenientes. Estamos trabajando para solucionar este problema.
+                    Por favor, intenta de nuevo más tarde o contacta al administrador del sitio.
+                </p>
+                <a href="{% url 'inicio:home' %}" class="btn-premium text-decoration-none">
+                    Volver al Inicio <i class="bi bi-house-door-fill ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
