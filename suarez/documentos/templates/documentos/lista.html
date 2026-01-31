@@ -39,8 +39,7 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
                     {% for cat in categorias %}
                     <a href="?categoria={{ cat.id }}"
                         class="list-group-item list-group-item-action p-3 border-0 transition-hover {% if categoria_activa == cat.id %}active fw-bold{% endif %}"
-                        style="{% if categoria_activa == cat.id %}background-color: var(--primary); border: none;{% else %}transition: var(--transition);{% endif %}">{{
-                        cat.nombre }}</a>
+                        style="{% if categoria_activa == cat.id %}background-color: var(--primary); border: none;{% else %}transition: var(--transition);{% endif %}">{{ cat.nombre }}</a>
                     {% endfor %}
                 </div>
 
@@ -73,9 +72,7 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
                                     </div>
                                 </td>
                                 <td class="py-4">
-                                    <span
-                                        class="badge bg-light text-primary border border-primary-subtle px-3 py-2 rounded-pill small fw-bold">{{
-                                        doc.categoria.nombre }}</span>
+                                    <span class="badge bg-light text-primary border border-primary-subtle px-3 py-2 rounded-pill small fw-bold">{{ doc.categoria.nombre }}</span>
                                 </td>
                                 <td class="py-4 text-muted small">
                                     {{ doc.fecha_subida|date:"d M, Y" }}

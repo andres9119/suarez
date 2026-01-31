@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from suarez.image_optimizer import OptimizedImageField
 
 class Comunidad(models.Model):
     TIPO_CHOICES = [
@@ -12,7 +13,7 @@ class Comunidad(models.Model):
     tipo = models.CharField(max_length=20, choices=TIPO_CHOICES)
     resena_cultural = models.TextField()
     historia = models.TextField()
-    logo_o_emblema = models.ImageField(upload_to='comunidades/logos/', blank=True, null=True)
+    logo_o_emblema = OptimizedImageField(upload_to='comunidades/logos/', max_width=400, max_height=400, quality=90, help_text="Logo o emblema de la comunidad")
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -24,7 +25,8 @@ class Comunidad(models.Model):
 
 class ImagenComunidad(models.Model):
     comunidad = models.ForeignKey(Comunidad, related_name='imagenes', on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='comunidades/galeria/')
+    imagen = OptimizedImageField(upload_to='comunidades/galeria/', max_width=1200, max_height=800, quality=85, create_thumbnail=True)
+    imagen_thumbnail = models.ImageField(upload_to='comunidades/galeria/thumbnails/', blank=True, null=True)
     descripcion = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
