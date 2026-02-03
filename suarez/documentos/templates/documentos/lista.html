@@ -6,23 +6,24 @@
 normativas municipales. Transparencia y acceso a la información.{% endblock %}
 
 {% block content %}
-<div class="hero-institution animate-fade" style="min-height: 40vh; padding: 100px 0 60px;">
-    <div class="container text-center text-white">
+<div class="hero-institution animate-fade bg-suarez-hero" style="min-height: auto; padding: 60px 0 40px;">
+    <div class="container text-center" style="margin-top: 40px;">
         <span
-            class="badge bg-accent text-navy mb-4 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Transparencia</span>
-        <h1 class="display-3 fw-bold mb-3">Documentos Públicos</h1>
+            class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Transparencia</span>
+        <h1 class="fw-extrabold mb-3 text-white" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">
+            Documentos Públicos</h1>
 
         <!-- Breadcrumbs -->
-        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-3">
-            <ol class="breadcrumb">
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-4">
+            <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
                         class="text-white text-decoration-none opacity-75 hover-accent">Inicio</a></li>
                 <li class="breadcrumb-item active text-white" aria-current="page">Documentos</li>
             </ol>
         </nav>
 
-        <p class="lead opacity-90 col-md-8 mx-auto">Accede a la información oficial, decretos y resoluciones de tu
-            municipio de manera clara y directa.</p>
+        <p class="lead fs-3 fw-medium opacity-90 col-md-9 mx-auto text-white">Accede a la información oficial, decretos
+            y resoluciones de tu municipio de manera clara y directa.</p>
     </div>
 </div>
 
@@ -30,7 +31,7 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
     <div class="container section-padding">
         <div class="row g-5">
             <div class="col-lg-3">
-                <h5 class="fw-bold mb-4 text-navy">Categorías</h5>
+                <h2 class="fw-bold mb-4 text-navy h5">Categorías</h2>
                 <div class="list-group list-group-flush shadow-premium rounded-4 overflow-hidden border-0">
                     <a href="{% url 'documentos:lista' %}"
                         class="list-group-item list-group-item-action p-3 fw-bold {% if not categoria_activa %}active{% endif %}"
@@ -39,17 +40,21 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
                     {% for cat in categorias %}
                     <a href="?categoria={{ cat.id }}"
                         class="list-group-item list-group-item-action p-3 border-0 transition-hover {% if categoria_activa == cat.id %}active fw-bold{% endif %}"
-                        style="{% if categoria_activa == cat.id %}background-color: var(--primary); border: none;{% else %}transition: var(--transition);{% endif %}">{{ cat.nombre }}</a>
+                        style="{% if categoria_activa == cat.id %}background-color: var(--primary); border: none;{% else %}transition: var(--transition);{% endif %}">
+                        {{ cat.nombre }}</a>
                     {% endfor %}
                 </div>
 
-                <div class="mt-5 p-4 bg-primary-soft rounded-4 border border-white shadow-sm">
-                    <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-info-circle me-2"></i>¿Buscas algo más?</h6>
-                    <p class="small text-muted mb-0">Si no encuentras lo que buscas, puedes contactar con la oficina de
+                <div class="mt-5 p-4 bg-white bg-opacity-80 rounded-4 border border-white shadow-sm">
+                    <h3 class="fw-bold mb-3 text-primary h6"><i class="bi bi-info-circle me-2"></i>¿Buscas algo más?
+                    </h3>
+                    <p class="small text-navy mb-0 opacity-75">Si no encuentras lo que buscas, puedes contactar con la
+                        oficina de
                         planeación municipal.</p>
                 </div>
             </div>
             <div class="col-lg-9">
+                <h2 class="fw-bold mb-4 text-navy h5">Listado de Documentos</h2>
                 <div class="table-responsive bg-white p-4 p-xl-5 rounded-5 shadow-premium">
                     <table class="table table-hover align-middle border-0">
                         <thead>
@@ -72,7 +77,9 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
                                     </div>
                                 </td>
                                 <td class="py-4">
-                                    <span class="badge bg-light text-primary border border-primary-subtle px-3 py-2 rounded-pill small fw-bold">{{ doc.categoria.nombre }}</span>
+                                    <span
+                                        class="badge bg-light text-primary border border-primary-subtle px-3 py-2 rounded-pill small fw-bold">
+                                        {{ doc.categoria.nombre }}</span>
                                 </td>
                                 <td class="py-4 text-muted small">
                                     {{ doc.fecha_subida|date:"d M, Y" }}

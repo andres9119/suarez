@@ -5,8 +5,8 @@
 
 {% block content %}
 <!-- Hero Section for Detail -->
-<section class="hero-institution mb-5" style="padding: 100px 0 60px;">
-    <div class="container">
+<section class="hero-institution mb-5" style="min-height: auto; padding: 60px 0 40px;">
+    <div class="container" style="margin-top: 40px;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}" class="text-white opacity-75">Inicio</a>
@@ -20,13 +20,14 @@
             <div class="col-md-2 text-center text-md-start">
                 {% if comunidad.logo_o_emblema %}
                 <img src="{{ comunidad.logo_o_emblema.url }}"
-                    class="rounded-circle shadow-lg border border-3 border-white mb-3"
-                    style="width: 150px; height: 150px; object-fit: cover;" alt="{{ comunidad.nombre }}" loading="lazy">
+                    class="rounded-circle shadow-lg border border-3 border-white mb-3 mb-md-0"
+                    style="width: 140px; height: 140px; object-fit: cover;" alt="{{ comunidad.nombre }}" loading="lazy">
                 {% endif %}
             </div>
             <div class="col-md-10">
-                <span class="badge bg-accent text-dark mb-2 px-3 py-2 rounded-pill fw-bold">{{ comunidad.get_tipo_display }}</span>
-                <h1 class="display-3 fw-bold text-white">{{ comunidad.nombre }}</h1>
+                <span class="badge bg-accent text-dark mb-2 px-3 py-2 rounded-pill fw-bold">
+                    {{ comunidad.get_tipo_display }}</span>
+                <h1 class="display-2 fw-extrabold text-white mb-0" style="line-height: 1.1;">{{ comunidad.nombre }}</h1>
             </div>
         </div>
     </div>

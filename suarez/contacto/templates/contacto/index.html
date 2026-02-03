@@ -6,13 +6,24 @@
 canales oficiales de comunicación. Estamos para servirte.{% endblock %}
 
 {% block content %}
-<div class="hero-institution animate-fade" style="min-height: 40vh; padding: 100px 0 60px;">
-    <div class="container text-center text-white">
+<div class="hero-institution animate-fade bg-suarez-hero" style="min-height: auto; padding: 60px 0 40px;">
+    <div class="container text-center" style="margin-top: 40px;">
         <span
-            class="badge bg-accent text-navy mb-4 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Atención</span>
-        <h1 class="display-3 fw-bold mb-3">Ponte en Contacto</h1>
-        <p class="lead opacity-90 col-md-8 mx-auto">Estamos aquí para escucharte y servirte. Tu opinión y necesidades
-            son nuestra prioridad para construir un mejor Suárez.</p>
+            class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Atención</span>
+        <h1 class="fw-extrabold mb-3 text-white" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">Ponte en
+            Contacto</h1>
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-4">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
+                        class="text-white text-decoration-none opacity-75 hover-accent">Inicio</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Contacto</li>
+            </ol>
+        </nav>
+
+        <p class="lead text-white fs-3 fw-medium opacity-90 col-md-9 mx-auto">Estamos aquí para escucharte y servirte.
+            Tu opinión y necesidades son nuestra prioridad para construir un mejor Suárez.</p>
     </div>
 </div>
 
@@ -23,7 +34,7 @@ canales oficiales de comunicación. Estamos para servirte.{% endblock %}
                 <!-- Form Column -->
                 <div class="col-lg-7">
                     <div class="card border-0 shadow-premium p-4 p-md-5 rounded-5 h-100">
-                        <h3 class="fw-bold mb-5 text-navy">Escríbenos</h3>
+                        <h2 class="fw-bold mb-5 text-navy h3">Escríbenos</h2>
                         {% if messages %}
                         {% for message in messages %}
                         <div class="alert alert-{{ message.tags }} alert-dismissible fade show rounded-4 shadow-sm mb-4"
@@ -79,7 +90,7 @@ canales oficiales de comunicación. Estamos para servirte.{% endblock %}
                 <div class="col-lg-5">
                     <div class="card border-0 shadow-premium p-4 p-md-5 mb-5 rounded-5 h-100"
                         style="background: var(--navy); color: var(--white);">
-                        <h3 class="fw-bold mb-5">Canales de Atención</h3>
+                        <h2 class="fw-bold mb-5 h3">Canales de Atención</h2>
                         <div class="d-flex mb-5">
                             <div class="bg-white bg-opacity-10 rounded-4 p-3 me-3 d-flex align-items-center justify-content-center"
                                 style="width: 60px; height: 60px;">
@@ -121,7 +132,7 @@ canales oficiales de comunicación. Estamos para servirte.{% endblock %}
                                 style="width: 60px; height: 60px;">
                                 <i class="bi bi-share fs-3 text-accent"></i>
                             </div>
-                            <h4 class="fw-bold mb-0 text-white">Síguenos en Redes Sociales</h4>
+                            <h3 class="fw-bold mb-0 text-white h4">Síguenos en Redes Sociales</h3>
                         </div>
                         <p class="text-white opacity-75 mb-4 small">Mantente informado de todas las noticias, eventos y
                             gestión de la administración municipal a través de nuestros canales oficiales.</p>

@@ -7,23 +7,24 @@
 tradiciones ancestrales y el patrimonio social que hace único a nuestro municipio.{% endblock %}
 
 {% block content %}
-<div class="hero-institution animate-fade bg-comunidades-hero" style="min-height: 40vh; padding: 120px 0 80px;">
-    <div class="container text-center">
+<div class="hero-institution animate-fade bg-comunidades-hero" style="min-height: auto; padding: 60px 0 40px;">
+    <div class="container text-center" style="margin-top: 40px;">
         <span class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Nuestra
             Gente</span>
-        <h1 class="display-3 fw-bold text-white mb-3">Nuestras Comunidades</h1>
+        <h1 class="fw-extrabold mb-3 text-white" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1;">
+            Nuestras Comunidades</h1>
 
         <!-- Breadcrumbs -->
-        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-3">
-            <ol class="breadcrumb">
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-4">
+            <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
                         class="text-white text-decoration-none opacity-75 hover-accent">Inicio</a></li>
                 <li class="breadcrumb-item active text-white" aria-current="page">Comunidades</li>
             </ol>
         </nav>
 
-        <p class="lead text-white opacity-90 col-md-8 mx-auto">Conoce la riqueza cultural y social de los habitantes que
-            hacen de Suárez un territorio único.</p>
+        <p class="lead text-white fs-3 fw-medium opacity-90 col-md-9 mx-auto">Conoce la riqueza cultural y social de los
+            habitantes que hacen de Suárez un territorio único.</p>
     </div>
 </div>
 
@@ -46,7 +47,7 @@ tradiciones ancestrales y el patrimonio social que hace único a nuestro municip
                         </div>
                         {% endif %}
 
-                        <h4 class="fw-bold mb-3">{{ comunidad.nombre }}</h4>
+                        <h2 class="fw-bold mb-3 h4">{{ comunidad.nombre }}</h2>
 
                         <div class="mb-4">
                             <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill fw-bold small">
@@ -70,8 +71,8 @@ tradiciones ancestrales y el patrimonio social que hace único a nuestro municip
             <div class="col-12 text-center py-5">
                 <div class="bg-white p-5 rounded-5 shadow-sm d-inline-block">
                     <i class="bi bi-people display-1 text-muted opacity-25 mb-4 d-block"></i>
-                    <h3 class="text-muted">Próximamente estaremos publicando información sobre nuestras comunidades.
-                    </h3>
+                    <h2 class="text-muted h4">Próximamente estaremos publicando información sobre nuestras comunidades.
+                    </h2>
                 </div>
             </div>
             {% endfor %}

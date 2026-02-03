@@ -22,7 +22,7 @@ de Suárez, Cauca. Tu información municipal al alcance.{% endblock %}
             <div class="bg-white p-5 rounded-5 shadow-premium d-inline-block position-relative">
                 <div class="ornament-cafe mx-auto mb-4" style="width: 120px; height: 120px;"></div>
                 <i class="bi bi-search display-3 text-muted opacity-25 mb-4 d-block" style="margin-top: -60px;"></i>
-                <h3>No encontramos resultados para tu búsqueda</h3>
+                <h2 class="h3">No encontramos resultados para tu búsqueda</h2>
                 <p class="text-muted">Intenta con otras palabras clave relacionadas con trámites, noticias o café.</p>
                 <a href="{% url 'inicio:home' %}" class="btn btn-primary rounded-pill px-5 mt-4">Volver al Inicio</a>
             </div>
@@ -51,13 +51,13 @@ de Suárez, Cauca. Tu información municipal al alcance.{% endblock %}
                 <!-- Category: Noticias -->
                 {% if noticias %}
                 <div class="mb-5">
-                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
-                            class="bi bi-newspaper me-2 text-primary"></i>Noticias y Eventos</h4>
+                    <h2 class="fw-bold text-navy mb-4 pb-2 border-bottom h4"><i
+                            class="bi bi-newspaper me-2 text-primary"></i>Noticias y Eventos</h2>
                     {% for item in noticias %}
                     <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <h5 class="fw-bold mb-1">{{ item.titulo }}</h5>
+                                <h3 class="fw-bold mb-1 h5">{{ item.titulo }}</h3>
                                 <p class="small text-muted mb-0">{{ item.contenido|truncatewords:20 }}</p>
                             </div>
                             <a href="{% url 'noticias:detalle' item.slug %}"
@@ -71,16 +71,16 @@ de Suárez, Cauca. Tu información municipal al alcance.{% endblock %}
                 <!-- Category: Café -->
                 {% if experiencias %}
                 <div class="mb-5">
-                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
-                            class="bi bi-cup-hot-fill me-2 text-primary"></i>Experiencias Cafeteras</h4>
+                    <h2 class="fw-bold text-navy mb-4 pb-2 border-bottom h4"><i
+                            class="bi bi-cup-hot-fill me-2 text-primary"></i>Experiencias Cafeteras</h2>
                     {% for item in experiencias %}
                     <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <h5 class="fw-bold mb-1">{{ item.titulo }}</h5>
+                                <h3 class="fw-bold mb-1 h5">{{ item.titulo }}</h3>
                                 <p class="small text-muted mb-0">{{ item.historia|truncatewords:20 }}</p>
                             </div>
-                            <a href="{% url 'experiencias_cafeteras:detalle' item.pk %}"
+                            <a href="{% url 'experiencias_cafeteras:detalle' item.slug %}"
                                 class="btn btn-outline-primary btn-sm rounded-pill ms-3">Ver más</a>
                         </div>
                     </div>
@@ -91,16 +91,16 @@ de Suárez, Cauca. Tu información municipal al alcance.{% endblock %}
                 <!-- Category: Comunidades -->
                 {% if comunidades %}
                 <div class="mb-5">
-                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
-                            class="bi bi-people-fill me-2 text-primary"></i>Nuestras Comunidades</h4>
+                    <h2 class="fw-bold text-navy mb-4 pb-2 border-bottom h4"><i
+                            class="bi bi-people-fill me-2 text-primary"></i>Nuestras Comunidades</h2>
                     {% for item in comunidades %}
                     <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <h5 class="fw-bold mb-1">{{ item.nombre }}</h5>
+                                <h3 class="fw-bold mb-1 h5">{{ item.nombre }}</h3>
                                 <p class="small text-muted mb-0">{{ item.resena_cultural|truncatewords:20 }}</p>
                             </div>
-                            <a href="{% url 'comunidades:detalle' item.pk %}"
+                            <a href="{% url 'comunidades:detalle' item.slug %}"
                                 class="btn btn-outline-primary btn-sm rounded-pill ms-3">Ver más</a>
                         </div>
                     </div>
@@ -111,13 +111,13 @@ de Suárez, Cauca. Tu información municipal al alcance.{% endblock %}
                 <!-- Category: Documentos -->
                 {% if documentos %}
                 <div class="mb-5">
-                    <h4 class="fw-bold text-navy mb-4 pb-2 border-bottom"><i
-                            class="bi bi-file-earmark-pdf-fill me-2 text-primary"></i>Documentos Públicos</h4>
+                    <h2 class="fw-bold text-navy mb-4 pb-2 border-bottom h4"><i
+                            class="bi bi-file-earmark-pdf-fill me-2 text-primary"></i>Documentos Públicos</h2>
                     {% for item in documentos %}
                     <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 transition-hover">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <h5 class="fw-bold mb-1">{{ item.titulo }}</h5>
+                                <h3 class="fw-bold mb-1 h5">{{ item.titulo }}</h3>
                                 <span class="badge bg-primary-soft text-primary rounded-pill small">{{
                                     item.categoria.nombre
                                     }}</span>
