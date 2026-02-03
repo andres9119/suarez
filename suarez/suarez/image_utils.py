@@ -112,7 +112,12 @@ class ImageOptimizer:
             buffer = BytesIO()
             img.save(buffer, format='JPEG', quality=quality, optimize=True)
             
-            return ContentFile(buffer.getvalue())
+            # Nombre basado en el original
+            original_name = os.path.basename(image_field.name)
+            name, ext = os.path.splitext(original_name)
+            thumbnail_name = f"{name}_thumb{ext}"
+            
+            return ContentFile(buffer.getvalue(), name=thumbnail_name)
             
         except Exception as e:
             logger.error(f"Error creando thumbnail para {image_field.name}: {str(e)}")

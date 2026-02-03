@@ -225,7 +225,7 @@ h6,
 }
 
 .bg-amanecer {
-    background: linear-gradient(rgba(255, 107, 53, 0.2), rgba(255, 107, 53, 0.2)), url('../img/amanecer.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/amanecer.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -601,6 +601,20 @@ h6,
     top: 0;
 }
 
+.glass-readability {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 2rem;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-shadow-strong {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
 .card-experience-item:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-medium);
@@ -608,7 +622,8 @@ h6,
 
 .card-experience-image {
     width: 100%;
-    padding-top: 65%; /* Aspect ratio 16:9 for image area */
+    padding-top: 65%;
+    /* Aspect ratio 16:9 for image area */
     background-size: cover;
     background-position: center;
     position: relative;
@@ -651,7 +666,8 @@ h6,
     color: #555;
     line-height: 1.6;
     margin-bottom: 1.5rem;
-    flex-grow: 1; /* Allows description to take up available space */
+    flex-grow: 1;
+    /* Allows description to take up available space */
 }
 
 .card-experience-footer {
@@ -693,7 +709,8 @@ h6,
     .card-experience-image {
         width: 40%;
         padding-top: 0;
-        height: 150px; /* Fixed height for mobile image */
+        height: 150px;
+        /* Fixed height for mobile image */
         border-bottom: none;
         border-right: 5px solid var(--accent-soft);
     }
@@ -725,19 +742,250 @@ h6,
 /* Styles for section images */
 .section-image {
     width: 100%;
-    height: 400px; /* Altura fija para desktop */
+    height: 400px;
+    /* Altura fija para desktop */
     object-fit: cover;
 }
 
 @media (max-width: 992px) {
     .section-image {
-        height: 300px; /* Altura más pequeña para tablets */
+        height: 300px;
+        /* Altura más pequeña para tablets */
     }
 }
 
 @media (max-width: 768px) {
     .section-image {
-        height: 250px; /* Altura para móviles */
-        margin-bottom: 1.5rem; /* Espacio debajo de la imagen en móvil */
+        height: 250px;
+        /* Altura para móviles */
+        margin-bottom: 1.5rem;
+        /* Espacio debajo de la imagen en móvil */
     }
+}
+
+/* Accessibility Widget Styles */
+:root {
+    --acc-btn-size: 50px;
+    --acc-btn-bg: #003366;
+    /* Navy Blue */
+    --acc-btn-color: #ffffff;
+    --acc-panel-width: 300px;
+    --acc-z-index: 10000;
+}
+
+/* Floating Button */
+#acc-widget-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: var(--acc-btn-size);
+    height: var(--acc-btn-size);
+    background-color: var(--acc-btn-bg);
+    color: var(--acc-btn-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: var(--acc-z-index);
+    transition: transform 0.3s ease;
+    border: 2px solid #fff;
+}
+
+#acc-widget-btn:hover {
+    transform: scale(1.1);
+}
+
+#acc-widget-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+/* Accessibility Panel */
+#acc-panel {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: var(--acc-panel-width);
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: var(--acc-z-index);
+    display: none;
+    border: 1px solid #e0e0e0;
+    font-family: system-ui, -apple-system, sans-serif !important;
+}
+
+#acc-panel.visible {
+    display: block;
+    animation: accFadeIn 0.3s ease;
+}
+
+@keyframes accFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.acc-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.acc-panel-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+}
+
+.acc-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    line-height: 1;
+}
+
+.acc-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.acc-option-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px 15px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #495057;
+    transition: all 0.2s;
+}
+
+.acc-option-btn:hover {
+    background-color: #e9ecef;
+}
+
+.acc-option-btn.active {
+    background-color: #003366;
+    color: #ffffff;
+    border-color: #003366;
+}
+
+.acc-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acc-reset-btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 8px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Accessibility Modes (Applied to body) */
+
+/* 1. Large Text */
+body.acc-text-large {
+    font-size: 120% !important;
+}
+
+/* 2. High Contrast */
+body.acc-high-contrast {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+}
+
+body.acc-high-contrast * {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+body.acc-high-contrast img {
+    filter: grayscale(100%) contrast(120%);
+}
+
+/* 3. Dark Mode (Softer than High Contrast) */
+body.acc-dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+body.acc-dark-mode .card,
+body.acc-dark-mode .navbar,
+body.acc-dark-mode .footer-premium,
+body.acc-dark-mode .bg-white,
+body.acc-dark-mode .bg-light {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+    border-color: #333 !important;
+}
+
+body.acc-dark-mode .text-navy,
+body.acc-dark-mode .text-primary,
+body.acc-dark-mode .text-muted {
+    color: #a0a0a0 !important;
+}
+
+body.acc-dark-mode a {
+    color: #64b5f6 !important;
+}
+
+body.acc-dark-mode .btn-primary,
+body.acc-dark-mode .bg-primary {
+    background-color: #0d47a1 !important;
+    border-color: #0d47a1 !important;
+}
+
+/* 4. Grayscale */
+body.acc-grayscale {
+    filter: grayscale(100%);
+}
+
+/* 4. Readable Font */
+body.acc-readable-font {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+body.acc-readable-font * {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* 5. Highlight Links */
+body.acc-links a {
+    text-decoration: underline !important;
+    font-weight: bold !important;
+    background-color: rgba(255, 255, 0, 0.2) !important;
 }

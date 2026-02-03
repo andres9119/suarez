@@ -9,7 +9,8 @@
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="{% block meta_description %}Portal Institucional de la Alcaldía de Suárez, Cauca. Noticias, documentos, transparencia y cultura cafetera.{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}Alcaldía Suárez Cauca, gobierno municipal, noticias Suárez, documentos públicos, transparencia, cultura cafetera, comunidades indígenas, Cauca Colombia{% endblock %}">
+    <meta name="keywords"
+        content="{% block meta_keywords %}Alcaldía Suárez Cauca, gobierno municipal, noticias Suárez, documentos públicos, transparencia, cultura cafetera, comunidades indígenas, Cauca Colombia{% endblock %}">
     <meta name="author" content="Alcaldía de Suárez">
     <meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}">
     <link rel="canonical" href="{{ request.build_absolute_uri }}">
@@ -51,39 +52,84 @@
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:title" content="{% block og_title %}Alcaldía Municipal de Suárez - Cauca{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Suárez, Cauca - Caficultura y Tradición{% endblock %}">
     <meta property="og:description"
-        content="{% block og_description %}Tierra de paz, cultura y el aroma inigualable de nuestro café. Conoce la gestión oficial.{% endblock %}">
+        content="{% block og_description %}Tierra de paz, cultura y el aroma inigualable de nuestro café. Conoce la esencia de nuestro territorio.{% endblock %}">
     <meta property="og:image"
         content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/escudo.png' %}{% endblock %}">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}Alcaldía Municipal de Suárez{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}Suárez, Cauca - Caficultura y Tradición{% endblock %}">
     <meta name="twitter:description"
-        content="{% block twitter_description %}Portal oficial de la Alcaldía de Suárez, Cauca{% endblock %}">
+        content="{% block twitter_description %}Portal de la Caficultura y Tradición de Suárez, Cauca{% endblock %}">
     <meta name="twitter:image"
         content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/escudo.png' %}{% endblock %}">
 
-    <title>{% block title %}Alcaldía Municipal de Suárez - Cauca{% endblock %}</title>
+    <title>{% block title %}Suárez, Cauca - Caficultura y Tradición{% endblock %}</title>
 
     <!-- Preload Critical Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap">
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="preload" as="style" href="{% static 'css/app.css' %}">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
+    <!-- Critical CSS (Non-blocking bootstrap and fonts loaded via pattern) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" media="print"
+        onload="this.media='all'">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        media="print" onload="this.media='all'">
 
+    <!-- App CSS (Combined main and accessibility) -->
+    <link href="{% static 'css/app.css' %}?v=3" rel="stylesheet" media="print" onload="this.media='all'">
 
-    <!-- Custom CSS -->
-    <link href="{% static 'css/main.css' %}?v=2" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/accessibility.css' %}">
+    <style>
+        /* Critical CSS for faster FCP */
+        :root {
+            --primary: #2d5a27;
+            --primary-soft: #edf4ec;
+            --accent: #ffc107;
+            --navy: #00251a;
+            --light: #fdfdfb;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.85);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Open Sans', system-ui, sans-serif;
+            background-color: var(--light);
+            color: #333;
+            margin: 0;
+        }
+
+        .navbar-custom {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-institution {
+            background-color: var(--navy);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+    </style>
     {% block extra_css %}{% endblock %}
 </head>
 
@@ -95,7 +141,7 @@
                 <img src="{% static 'img/escudo.png' %}" alt="Escudo de Suárez" height="40"
                     class="d-inline-block align-top">
                 <span>
-                    <span style="color: var(--primary);">ALCALDÍA</span> <span
+                    <span style="color: var(--primary);">CAFICULTURA</span> <span
                         style="color: var(--earth);">SUÁREZ</span>
                 </span>
             </a>
