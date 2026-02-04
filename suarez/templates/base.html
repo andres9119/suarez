@@ -9,10 +9,10 @@
     <!-- SEO Meta Tags -->
     <meta name="google-site-verification" content="GcYPerOXuTmeQwtrySaMiC0mIlQ3rKhA9_OrP0qsC3k" />
     <meta name="description"
-        content="{% block meta_description %}Portal oficial de la Alcaldía de Suárez, Cauca. Consulta noticias, realiza trámites, accede a documentos de transparencia y descubre nuestra rica cultura cafetera.{% endblock %}">
+        content="{% block meta_description %}Portal de Suárez 100% café, Cauca. Consulta noticias, descubre nuestra rica cultura cafetera y conoce nuestras comunidades.{% endblock %}">
     <meta name="keywords"
-        content="{% block meta_keywords %}Alcaldía Suárez Cauca, gobierno municipal, noticias Suárez, documentos públicos, transparencia, cultura cafetera, comunidades indígenas, Cauca Colombia{% endblock %}">
-    <meta name="author" content="Alcaldía de Suárez">
+        content="{% block meta_keywords %}Suárez 100% café, Suárez Cauca, cultura cafetera, comunidades indígenas, Cauca Colombia, turismo rural{% endblock %}">
+    <meta name="author" content="Suárez 100% café">
     <meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}">
     <link rel="canonical" href="{{ request.build_absolute_uri }}">
 
@@ -39,10 +39,10 @@
     {
         "@context": "https://schema.org",
         "@type": "GovernmentOrganization",
-        "name": "Alcaldía Municipal de Suárez, Cauca",
+        "name": "Suárez 100% café, Cauca",
         "url": "{{ request.scheme }}://{{ request.get_host }}",
-        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/escudo.png' %}",
-        "description": "Portal Institucional de la Alcaldía Municipal de Suárez, Cauca",
+        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.png' %}",
+        "description": "Portal de la cultura y tradición de Suárez 100% café, Cauca",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Suárez",
@@ -56,8 +56,8 @@
     }
     </script>
 
-    <link rel="icon" href="{% static 'img/escudo.png' %}" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/escudo.png' %}">
+    <link rel="icon" href="{% static 'img/logo_cafe_suarez.png' %}" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/logo_cafe_suarez.png' %}">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
@@ -66,7 +66,7 @@
     <meta property="og:description"
         content="{% block og_description %}Tierra de paz, cultura y el aroma inigualable de nuestro café. Conoce la esencia de nuestro territorio.{% endblock %}">
     <meta property="og:image"
-        content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/escudo.png' %}{% endblock %}">
+        content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.png' %}{% endblock %}">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -74,7 +74,7 @@
     <meta name="twitter:description"
         content="{% block twitter_description %}Portal de la Caficultura y Tradición de Suárez, Cauca{% endblock %}">
     <meta name="twitter:image"
-        content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/escudo.png' %}{% endblock %}">
+        content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.png' %}{% endblock %}">
 
     <title>{% block title %}Suárez, Cauca - Caficultura y Tradición{% endblock %}</title>
 
@@ -148,7 +148,7 @@
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="{% url 'inicio:home' %}">
-                <img src="{% static 'img/escudo.png' %}" alt="Escudo de Suárez" height="40"
+                <img src="{% static 'img/logo_cafe_suarez.png' %}" alt="Logo Suárez 100% café" height="40"
                     class="d-inline-block align-top">
                 <span>
                     <span style="color: var(--primary);">CAFICULTURA</span> <span
@@ -214,20 +214,20 @@
             <div class="row g-5">
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <img src="{% static 'img/escudo.png' %}" alt="Escudo de Suárez" height="60">
-                        <h5 class="fw-bold mb-0">Alcaldía de Suárez</h5>
+                        <img src="{% static 'img/logo_cafe_suarez.png' %}" alt="Logo Suárez 100% café" height="60">
+                        <h5 class="fw-bold mb-0">Suárez 100% café</h5>
                     </div>
                     <p class="small opacity-75 mb-4">Municipio del Cauca, tierra de diversidad, cultura y café.
                         Construyendo progreso con identidad y compromiso social para todos nuestros habitantes.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/alcaldiasuarezcauca" target="_blank" aria-label="Facebook"><i
-                                class="bi bi-facebook"></i></a>
-                        <a href="https://x.com/Suarez_cauca" target="_blank" aria-label="Twitter"><i
+                        <a href="https://www.facebook.com/search/top?q=suarez%20cauca" target="_blank"
+                            aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/search?q=suarez%20cauca" target="_blank" aria-label="Twitter"><i
                                 class="bi bi-twitter-x"></i></a>
-                        <a href="https://www.instagram.com/alcaldiadesuarez/?hl=es" target="_blank"
+                        <a href="https://www.instagram.com/explore/tags/suarezcauca/" target="_blank"
                             aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.youtube.com/@suarezcauca9705" target="_blank" aria-label="YouTube"><i
-                                class="bi bi-youtube"></i></a>
+                        <a href="https://www.youtube.com/results?search_query=suarez+cauca" target="_blank"
+                            aria-label="YouTube"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 ms-auto">
@@ -262,7 +262,7 @@
             <hr class="my-5 opacity-10">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="small opacity-50 mb-0">&copy; 2026 Alcaldía Municipal de Suárez. Gestión y Transparencia.
+                    <p class="small opacity-50 mb-0">&copy; 2026 Suárez 100% café. Tradición y Cultura.
                     </p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
@@ -277,11 +277,11 @@
     {
       "@context": "https://schema.org",
       "@type": "GovernmentOrganization",
-      "name": "Alcaldía Municipal de Suárez",
-      "alternateName": "Alcaldía de Suárez, Cauca",
+      "name": "Suárez 100% café",
+      "alternateName": "Suárez 100% café, Cauca",
       "url": "{{ request.scheme }}://{{ request.get_host }}",
-      "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/escudo.png' %}",
-      "description": "Portal Institucional de la Alcaldía de Suárez, Cauca. Gestión municipal, transparencia y servicios para la comunidad.",
+      "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.png' %}",
+      "description": "Portal de la cultura, café y tradición de Suárez, Cauca.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Suárez",

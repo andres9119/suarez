@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ noticia.titulo }} - Alcaldía de Suárez{% endblock %}
+{% block title %}{{ noticia.titulo }} - Suárez 100% café{% endblock %}
 
 {% block meta_description %}{{ noticia.contenido|truncatewords:25|striptags }}{% endblock %}
 
@@ -94,7 +94,7 @@ noticia.imagen_destacada.url }}{% endif %}{% endblock %}
   "image": "{% if noticia.imagen_destacada %}{{ request.scheme }}://{{ request.get_host }}{{ noticia.imagen_destacada.url }}{% endif %}",
   "organizer": {
     "@type": "GovernmentOrganization",
-    "name": "Alcaldía Municipal de Suárez"
+    "name": "Suárez 100% café"
   }
   {% else %}
   "headline": "{{ noticia.titulo|escapejs }}",
@@ -104,11 +104,11 @@ noticia.imagen_destacada.url }}{% endif %}{% endblock %}
   "image": "{% if noticia.imagen_destacada %}{{ request.scheme }}://{{ request.get_host }}{{ noticia.imagen_destacada.url }}{% endif %}",
   "author": {
     "@type": "Organization",
-    "name": "Alcaldía Municipal de Suárez"
+    "name": "Suárez 100% café"
   },
   "publisher": {
     "@type": "GovernmentOrganization",
-    "name": "Alcaldía Municipal de Suárez",
+    "name": "Suárez 100% café",
     "logo": {
       "@type": "ImageObject",
       "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/escudo.png' %}"

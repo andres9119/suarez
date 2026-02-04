@@ -22,7 +22,7 @@ def contacto(request):
             
             # 2. Enviar por Correo Electrónico
             cuerpo_email = f"""
-            Nuevo mensaje de contacto desde el sitio web de la Alcaldía de Suárez:
+            Nuevo mensaje de contacto desde el sitio web de Suárez 100% café:
             
             Nombre: {nombre}
             Correo: {email}
@@ -50,15 +50,15 @@ def contacto(request):
                 
                 Hemos recibido tu mensaje con el asunto "{asunto}".
                 
-                Gracias por ponerte en contacto con la Alcaldía de Suárez. 
+                Gracias por ponerte en contacto con Suárez 100% café. 
                 Nuestro equipo revisará tu solicitud y te responderemos a la brevedad posible.
                 
                 Atentamente,
-                Alcaldía Municipal de Suárez - Cauca
+                Suárez 100% café - Cauca
                 """
                 
                 send_mail(
-                    subject="Confirmación de Recibido - Alcaldía de Suárez",
+                    subject="Confirmación de Recibido - Suárez 100% café",
                     message=cuerpo_confirmacion,
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[email],

@@ -3,7 +3,7 @@ from suarez.image_optimizer import OptimizedImageField
 
 class BannerPrincipal(models.Model):
     titulo = models.CharField(max_length=200, default="Bienvenidos a Suárez")
-    subtitulo = models.TextField(default="Portal Institucional de la Alcaldía Municipal.")
+    subtitulo = models.TextField(default="Portal de la Tradición y Cultura Cafetera.")
     imagen_fondo = OptimizedImageField(upload_to='banner/', max_width=1920, max_height=800, quality=90, help_text="Imagen de gran tamaño para el fondo del banner")
     texto_boton = models.CharField(max_length=50, default="Ver Noticias")
     link_boton = models.CharField(max_length=200, default="/noticias/")

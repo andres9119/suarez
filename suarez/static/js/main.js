@@ -1,7 +1,7 @@
-// Main JavaScript file for Alcaldía de Suárez Website
+// Main JavaScript file for Suárez 100% café Website
 
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Navbar background on scroll
     const navbar = document.querySelector('.navbar-custom');
     if (navbar) {
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add hover effects to cards
     const cards = document.querySelectorAll('.card-premium, .transition-hover');
     cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-5px)';
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0)';
         });
     });
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-fade-in');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form validation enhancement
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
 
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Search functionality enhancement
     const searchInputs = document.querySelectorAll('input[type="search"], input[name="q"]');
     searchInputs.forEach(input => {
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             if (this.value.length > 2) {
                 this.classList.add('is-valid');
             } else {
@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Image lazy loading enhancement
     const images = document.querySelectorAll('img[loading="lazy"]');
     images.forEach(img => {
-        img.addEventListener('load', function() {
+        img.addEventListener('load', function () {
             this.classList.add('loaded');
         });
-        
-        img.addEventListener('error', function() {
+
+        img.addEventListener('error', function () {
             this.classList.add('error');
             // Set placeholder or handle error
             if (!this.src.includes('placeholder')) {
@@ -128,37 +128,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Print functionality
     const printButtons = document.querySelectorAll('[onclick*="print()"]');
     printButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
             e.preventDefault();
             window.print();
         });
     });
 
-    console.log('Alcaldía de Suárez - JavaScript loaded successfully');
+    console.log('Suárez 100% café - JavaScript loaded successfully');
 });
 
 // Utility functions
 window.suarezUtils = {
     // Format date
-    formatDate: function(date) {
+    formatDate: function (date) {
         return new Date(date).toLocaleDateString('es-CO', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
     },
-    
+
     // Copy to clipboard
-    copyToClipboard: function(text) {
+    copyToClipboard: function (text) {
         if (navigator.clipboard) {
             navigator.clipboard.writeText(text).then(() => {
                 this.showToast('Enlace copiado al portapapeles', 'success');
             });
         }
     },
-    
+
     // Show toast notification
-    showToast: function(message, type = 'info') {
+    showToast: function (message, type = 'info') {
         const toast = document.createElement('div');
         toast.className = `toast align-items-center text-white bg-${type} border-0`;
         toast.setAttribute('role', 'alert');
@@ -168,7 +168,7 @@ window.suarezUtils = {
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
         `;
-        
+
         // Add to container or create one
         let container = document.querySelector('.toast-container');
         if (!container) {
@@ -176,14 +176,14 @@ window.suarezUtils = {
             container.className = 'toast-container position-fixed bottom-0 end-0 p-3';
             document.body.appendChild(container);
         }
-        
+
         container.appendChild(toast);
-        
+
         // Initialize and show
         if (typeof bootstrap !== 'undefined') {
             const bsToast = new bootstrap.Toast(toast);
             bsToast.show();
-            
+
             // Remove after hidden
             toast.addEventListener('hidden.bs.toast', () => {
                 toast.remove();

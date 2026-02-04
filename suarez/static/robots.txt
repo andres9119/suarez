@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /static/admin/
 
-Sitemap: https://alcaldiasuarez.gov.co/sitemap.xml
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml
