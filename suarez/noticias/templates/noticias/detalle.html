@@ -31,9 +31,11 @@ noticia.imagen_destacada.url }}{% endif %}{% endblock %}
       </header>
 
       {% if noticia.imagen_destacada %}
-      <div class="mb-5 position-relative">
-        <img src="{{ noticia.imagen_destacada.url }}" class="img-fluid rounded-4 shadow-lg w-100"
-          style="max-height: 500px; object-fit: cover;" alt="{{ noticia.titulo }}" loading="lazy">
+      <div
+        class="mb-5 position-relative rounded-4 overflow-hidden shadow-lg bg-light d-flex align-items-center justify-content-center"
+        style="min-height: 300px; max-height: 600px;">
+        <img src="{{ noticia.imagen_destacada.url }}" class="img-fluid"
+          style="max-height: 600px; width: auto; object-fit: contain;" alt="{{ noticia.titulo }}" loading="lazy">
         {% if noticia.es_evento %}
         <div class="position-absolute top-0 end-0 m-4">
           <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill shadow">
@@ -56,8 +58,8 @@ noticia.imagen_destacada.url }}{% endif %}{% endblock %}
           </div>
           <div>
             <h2 class="mb-1 fw-bold h4">¡No faltes al evento!</h2>
-            <p class="mb-0 text-muted">Este evento se llevará a cabo el día <strong>{{
-                noticia.fecha_evento|date:"d/m/Y" }}</strong>.</p>
+            <p class="mb-0 text-muted">Este evento se llevará a cabo el día <strong>
+                {{ noticia.fecha_evento|date:"d/m/Y" }}</strong>.</p>
           </div>
         </div>
       </div>
