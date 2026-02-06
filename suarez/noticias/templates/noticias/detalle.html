@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load image_utils %}
 
 {% block title %}{{ noticia.titulo }} - Suárez 100% café{% endblock %}
 
@@ -34,7 +35,8 @@ noticia.imagen_destacada.url }}{% endif %}{% endblock %}
       <div
         class="mb-5 position-relative rounded-4 overflow-hidden shadow-lg bg-light d-flex align-items-center justify-content-center"
         style="min-height: 300px; max-height: 600px;">
-        <img src="{{ noticia.imagen_destacada.url }}" class="img-fluid" width="800" height="600"
+        {% webp_url noticia.imagen_destacada.url as noticia_webp %}
+        <img src="{{ noticia_webp }}" class="img-fluid" width="800" height="600"
           style="max-height: 600px; width: auto; object-fit: contain; aspect-ratio: 4/3;" alt="{{ noticia.titulo }}"
           loading="lazy">
         {% if noticia.es_evento %}
