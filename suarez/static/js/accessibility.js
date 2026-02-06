@@ -188,10 +188,25 @@
         document.getElementById('btn-links').classList.toggle('active', state.highlightLinks);
     }
 
+    let eventListenersSet = false;
+
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
         createWidget();
-        setupEventListeners();
+
+        const btn = document.getElementById('acc-widget-btn');
+        btn.addEventListener('click', () => {
+            if (!eventListenersSet) {
+                setupEventListeners();
+                eventListenersSet = true;
+                const panel = document.getElementById('acc-panel');
+                panel.classList.add('visible');
+            } else {
+                const panel = document.getElementById('acc-panel');
+                panel.classList.toggle('visible');
+            }
+        });
+
         loadState();
     });
 

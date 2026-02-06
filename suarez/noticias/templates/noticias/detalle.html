@@ -34,8 +34,9 @@ noticia.imagen_destacada.url }}{% endif %}{% endblock %}
       <div
         class="mb-5 position-relative rounded-4 overflow-hidden shadow-lg bg-light d-flex align-items-center justify-content-center"
         style="min-height: 300px; max-height: 600px;">
-        <img src="{{ noticia.imagen_destacada.url }}" class="img-fluid"
-          style="max-height: 600px; width: auto; object-fit: contain;" alt="{{ noticia.titulo }}" loading="lazy">
+        <img src="{{ noticia.imagen_destacada.url }}" class="img-fluid" width="800" height="600"
+          style="max-height: 600px; width: auto; object-fit: contain; aspect-ratio: 4/3;" alt="{{ noticia.titulo }}"
+          loading="lazy">
         {% if noticia.es_evento %}
         <div class="position-absolute top-0 end-0 m-4">
           <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill shadow">

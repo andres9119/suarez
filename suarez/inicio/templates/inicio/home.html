@@ -7,6 +7,12 @@
 {% block meta_description %}Suárez 100% café, Cauca. Portal de noticias, tradición y la riqueza cultural de nuestro
 territorio cafetero.{% endblock %}
 
+{% block extra_head %}
+{% if banner.imagen_fondo %}
+<link rel="preload" as="image" href="{{ banner.imagen_fondo.url }}" fetchpriority="high">
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <!-- Banner Hero Dinámico -->
 <section class="hero-institution animate-fade" {% if banner.imagen_fondo %}
@@ -67,7 +73,7 @@ territorio cafetero.{% endblock %}
             <div class="col-6 col-md-3 col-lg-3">
                 <div class="stat-card">
                     <i class="bi bi-people fs-2 text-accent mb-3 d-block"></i>
-                    <span class="stat-value">34,402</span>
+                    <span class="stat-value">33,762</span>
                     <span class="stat-label">Habitantes</span>
                 </div>
             </div>
@@ -81,8 +87,8 @@ territorio cafetero.{% endblock %}
             <div class="col-6 col-md-3 col-lg-3">
                 <div class="stat-card">
                     <i class="bi bi-map fs-2 text-accent mb-3 d-block"></i>
-                    <span class="stat-value">100%</span>
-                    <span class="stat-label">Caucano</span>
+                    <span class="stat-value">81%</span>
+                    <span class="stat-label">Población Rural</span>
                 </div>
             </div>
         </div>
@@ -101,14 +107,15 @@ territorio cafetero.{% endblock %}
         <div class="row align-items-center mb-5">
             <div class="col-lg-6">
                 <h3 class="fw-bold mb-3 text-primary"><i class="bi bi-geo-alt me-2"></i>Historia y Esencia</h3>
-                <p class="lead">Suárez, Cauca, es un territorio lleno de historia, diversidad y esperanza. Ubicado en el
-                    corazón del norte del departamento, este municipio se distingue por la riqueza de su gente, la
-                    belleza de sus paisajes y la fortaleza de sus tradiciones. Suárez no es solo un lugar geográfico, es
-                    un espacio donde la cultura, el trabajo y la identidad se viven día a día.</p>
+                <p class="lead">Suárez, Cauca, es un territorio vibrante con 33,762 habitantes, donde el 81.6% de su
+                    gente vive
+                    en el campo. Ubicado en el corazón del norte del departamento, este municipio destaca por su
+                    juventud y diversidad. Aquí, la educación agroambiental y el café son los motores que están
+                    transformando el futuro, reemplazando economías ilícitas por sueños de paz y sostenibilidad.</p>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="{% static 'img/comunidades_hero.png' %}" alt="Historia y Esencia de Suárez"
-                    class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
+                <img src="{% static 'img/comunidades_hero.webp' %}" alt="Historia y Esencia de Suárez" width="600"
+                    height="400" class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
             </div>
         </div>
 
@@ -122,8 +129,8 @@ territorio cafetero.{% endblock %}
                     grano representa dedicación, tradición y amor por la tierra.</p>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="{% static 'img/el_cafe_orgullo.jpg' %}" alt="El Café: Orgullo de Nuestra Tierra"
-                    class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
+                <img src="{% static 'img/el_cafe_orgullo.webp' %}" alt="El Café: Orgullo de Nuestra Tierra" width="600"
+                    height="400" class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
             </div>
         </div>
 
@@ -138,8 +145,8 @@ territorio cafetero.{% endblock %}
                     enriquecen la identidad local con su música, su historia y su resistencia cultural.</p>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="{% static 'img/cafeterasfondo.jpg' %}" alt="Diversidad Cultural y Ancestral de Suárez"
-                    class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
+                <img src="{% static 'img/cafeterasfondo.webp' %}" alt="Diversidad Cultural y Ancestral de Suárez"
+                    width="600" height="400" class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
             </div>
         </div>
 
@@ -166,7 +173,7 @@ territorio cafetero.{% endblock %}
 
 <!-- Decorative Spacer -->
 <section class="bg-amanecer py-5 text-center shadow-lg"
-    style="background-image: url('{% static 'img/bienvenidos.jpg' %}'); background-size: cover; background-position: center; min-height: 50vh; display: flex; align-items: center;">
+    style="background-image: url('{% static 'img/bienvenidos.webp' %}'); background-size: cover; background-position: center; min-height: 50vh; display: flex; align-items: center;">
     <div class="container py-5">
         <div class="glass-readability animate-fade">
             <h2 class="display-4 fw-bold mb-3 text-white text-shadow-strong">Tierra de Paz y Café</h2>
@@ -191,7 +198,9 @@ territorio cafetero.{% endblock %}
                 <div class="rounded-5 overflow-hidden shadow-premium">
                     {% if evento.imagen %}
                     <img src="{{ evento.imagen.url }}" class="img-fluid d-block mx-auto" alt="{{ evento.titulo }}"
-                        style="max-height: 600px; width: auto; transition: transform 0.5s ease;" loading="lazy">
+                        width="800" height="600"
+                        style="max-height: 600px; width: auto; aspect-ratio: 4/3; object-fit: cover; transition: transform 0.5s ease;"
+                        loading="lazy">
                     {% else %}
                     <div class="bg-secondary w-100" style="height: 300px;"></div>
                     {% endif %}
@@ -272,8 +281,8 @@ territorio cafetero.{% endblock %}
 
                         <div class="carousel-gallery-item">
                             <div class="gallery-item-wrapper shadow-premium">
-                                <img src="{{ img.imagen.url }}" class="gallery-img" alt="{{ img.titulo }}"
-                                    loading="lazy">
+                                <img src="{{ img.imagen.url }}" class="gallery-img" alt="{{ img.titulo }}" width="400"
+                                    height="400" loading="lazy">
                                 {% if img.titulo %}
                                 <div class="gallery-caption-overlay text-center">
                                     <h5 class="fw-bold mb-0 text-white fs-4">{{ img.titulo }}</h5>

@@ -31,7 +31,17 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'G-QMRT2VBTL3');
+
+        // Delay GA initialization to give priority to main content
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function () {
+                gtag('config', 'G-QMRT2VBTL3');
+            });
+        } else {
+            setTimeout(function () {
+                gtag('config', 'G-QMRT2VBTL3');
+            }, 2000);
+        }
     </script>
 
     <!-- Organization Schema -->
@@ -41,7 +51,7 @@
         "@type": "GovernmentOrganization",
         "name": "Suárez 100% café, Cauca",
         "url": "{{ request.scheme }}://{{ request.get_host }}",
-        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.png' %}",
+        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.webp' %}",
         "description": "Portal de la cultura y tradición de Suárez 100% café, Cauca",
         "address": {
             "@type": "PostalAddress",
@@ -140,6 +150,7 @@
             color: var(--navy);
         }
     </style>
+    {% block extra_head %}{% endblock %}
     {% block extra_css %}{% endblock %}
 </head>
 
@@ -148,7 +159,7 @@
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="{% url 'inicio:home' %}">
-                <img src="{% static 'img/logo_cafe_suarez.png' %}" alt="Logo Suárez 100% café" height="40"
+                <img src="{% static 'img/logo_cafe_suarez.png' %}" alt="Logo Suárez 100% café" width="40" height="40"
                     class="d-inline-block align-top">
                 <span>
                     <span style="color: var(--primary);">CAFICULTURA</span> <span
@@ -157,7 +168,7 @@
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
+                aria-label="Abrir menú de navegación">
                 <i class="bi bi-list fs-1 text-primary"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -192,8 +203,9 @@
                             <div class="input-group input-group-sm">
                                 <input type="text" name="q"
                                     class="form-control rounded-pill-start border-0 bg-light px-3"
-                                    placeholder="Buscar..." aria-label="Buscar" required>
-                                <button class="btn btn-primary rounded-pill-end border-0 px-3" type="submit">
+                                    placeholder="Buscar..." aria-label="Buscar en el sitio web" required>
+                                <button class="btn btn-primary rounded-pill-end border-0 px-3" type="submit"
+                                    aria-label="Ejecutar búsqueda">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
@@ -214,20 +226,22 @@
             <div class="row g-5">
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <img src="{% static 'img/logo_cafe_suarez.png' %}" alt="Logo Suárez 100% café" height="60">
+                        <img src="{% static 'img/logo_cafe_suarez.png' %}" alt="Logo Suárez 100% café" width="60"
+                            height="60">
                         <h5 class="fw-bold mb-0">Suárez 100% café</h5>
                     </div>
                     <p class="small opacity-75 mb-4">Municipio del Cauca, tierra de diversidad, cultura y café.
                         Construyendo progreso con identidad y compromiso social para todos nuestros habitantes.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/search/top?q=suarez%20cauca" target="_blank"
-                            aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="https://x.com/search?q=suarez%20cauca" target="_blank" aria-label="Twitter"><i
-                                class="bi bi-twitter-x"></i></a>
-                        <a href="https://www.instagram.com/explore/tags/suarezcauca/" target="_blank"
-                            aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.youtube.com/results?search_query=suarez+cauca" target="_blank"
-                            aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="https://www.facebook.com/search/top?q=suarez%20cauca" target="_blank" rel="noopener"
+                            aria-label="Facebook (abre en pestaña nueva)"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/search?q=suarez%20cauca" target="_blank" rel="noopener"
+                            aria-label="Twitter X (abre en pestaña nueva)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://www.instagram.com/explore/tags/suarezcauca/" target="_blank" rel="noopener"
+                            aria-label="Instagram (abre en pestaña nueva)"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/results?search_query=suarez+autca" target="_blank"
+                            rel="noopener" aria-label="YouTube (abre en pestaña nueva)"><i
+                                class="bi bi-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 ms-auto">
@@ -266,10 +280,10 @@
                         apoyados por:</p>
                     <div
                         class="d-flex flex-wrap gap-4 align-items-center justify-content-center justify-content-md-start">
-                        <img src="{% static 'img/PBF logo_white_H_SPA.png' %}" alt="Logo PBF" height="45"
+                        <img src="{% static 'img/PBF logo_white_H_SPA.webp' %}" alt="Logo PBF" width="160" height="45"
                             class="opacity-75 hover-opacity-100 transition-hover"
                             style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
-                        <img src="{% static 'img/PDET_PROGRAMA BLANCO.png' %}" alt="Logo PDET" height="40"
+                        <img src="{% static 'img/PDET_PROGRAMA BLANCO.webp' %}" alt="Logo PDET" width="120" height="40"
                             class="opacity-75 hover-opacity-100 transition-hover"
                             style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
                     </div>

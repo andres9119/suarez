@@ -25,20 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
+        }, { passive: true });
     }
-
-    // Add hover effects to cards
-    const cards = document.querySelectorAll('.card-premium, .transition-hover');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function () {
-            this.style.transform = 'translateY(-5px)';
-        });
-
-        card.addEventListener('mouseleave', function () {
-            this.style.transform = 'translateY(0)';
-        });
-    });
 
     // Animate elements on scroll
     const observerOptions = {
@@ -133,8 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
             window.print();
         });
     });
-
-    console.log('Suárez 100% café - JavaScript loaded successfully');
 });
 
 // Utility functions

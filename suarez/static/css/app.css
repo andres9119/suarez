@@ -146,7 +146,7 @@ h6,
 
 /* Decorative Backgrounds */
 .bg-suarez-hero {
-    background: linear-gradient(rgba(0, 37, 26, 0.3), rgba(0, 37, 26, 0.3)), url('../img/paisaje_hero.png');
+    background: linear-gradient(rgba(0, 37, 26, 0.3), rgba(0, 37, 26, 0.3)), url('../img/paisaje_hero.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -154,7 +154,7 @@ h6,
 }
 
 .bg-texture-culture {
-    background-image: url('../img/textura_cultura.png');
+    background-image: url('../img/textura_cultura.webp');
     background-size: 300px;
     background-repeat: repeat;
     opacity: 0.05;
@@ -178,7 +178,7 @@ h6,
 }
 
 .bg-comunidades-hero {
-    background: linear-gradient(rgba(0, 37, 26, 0.4), rgba(0, 37, 26, 0.4)), url('../img/comunidades_hero.png');
+    background: linear-gradient(rgba(0, 37, 26, 0.4), rgba(0, 37, 26, 0.4)), url('../img/comunidades_hero.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -199,29 +199,15 @@ h6,
 
 /* User-uploaded backgrounds */
 .bg-caficultores {
-    background: linear-gradient(rgba(45, 90, 39, 0.4), rgba(45, 90, 39, 0.4)), url('../img/cafeterasfondo.jpg');
+    background: linear-gradient(rgba(45, 90, 39, 0.4), rgba(45, 90, 39, 0.4)), url('../img/cafeterasfondo.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
-}
-
-.bg-recolector-cafe {
-    background: linear-gradient(rgba(58, 42, 24, 0.3), rgba(58, 42, 24, 0.3)), url('../img/recolector de cafe.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-}
-
-.bg-cafe-detalle {
-    background: linear-gradient(rgba(62, 51, 38, 0.5), rgba(62, 51, 38, 0.5)), url('../img/cafe2.jpg');
-    background-size: cover;
-    background-position: center;
 }
 
 .bg-rio-suarez {
-    background: linear-gradient(rgba(0, 68, 102, 0.3), rgba(0, 68, 102, 0.3)), url('../img/rio suarez.jpg');
+    background: linear-gradient(rgba(0, 68, 102, 0.3), rgba(0, 68, 102, 0.3)), url('../img/rio suarez.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -229,65 +215,7 @@ h6,
 }
 
 .bg-amanecer {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/amanecer.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-}
-
-.bg-atardecer {
-    background: linear-gradient(rgba(251, 146, 60, 0.25), rgba(251, 146, 60, 0.25)), url('../img/atardecer.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-}
-
-.bg-artesanias {
-    background: linear-gradient(rgba(139, 69, 19, 0.4), rgba(139, 69, 19, 0.4)), url('../img/artesanias.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-danza {
-    background: linear-gradient(rgba(88, 28, 135, 0.35), rgba(88, 28, 135, 0.35)), url('../img/danza.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-musica {
-    background: linear-gradient(rgba(168, 85, 247, 0.3), rgba(168, 85, 247, 0.3)), url('../img/musica.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-gobierno {
-    background: linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.5)), url('../img/gobierno.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-iglesia {
-    background: linear-gradient(rgba(71, 85, 105, 0.4), rgba(71, 85, 105, 0.4)), url('../img/iglesia.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-emprendedores {
-    background: linear-gradient(rgba(234, 179, 8, 0.3), rgba(234, 179, 8, 0.3)), url('../img/emprendedores.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-estudiantes {
-    background: linear-gradient(rgba(59, 130, 246, 0.35), rgba(59, 130, 246, 0.35)), url('../img/estudiantes.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.bg-amo-suarez {
-    background: linear-gradient(rgba(220, 38, 38, 0.25), rgba(220, 38, 38, 0.25)), url('../img/amo suarez.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/amanecer.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -342,14 +270,15 @@ h6,
 /* --- Hero Section --- */
 .hero-institution {
     position: relative;
-    background: linear-gradient(rgba(0, 37, 26, 0.6), rgba(0, 37, 26, 0.4)), var(--hero-bg, #004d40);
+    background-color: var(--navy);
+    /* Fallback color for LCP */
+    background-image: linear-gradient(rgba(0, 37, 26, 0.6), rgba(0, 37, 26, 0.4)), var(--hero-bg, none);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
     min-height: 80vh;
     padding-top: 140px;
-    /* Account for sticky navbar */
     padding-bottom: 80px;
     display: flex;
     align-items: center;
@@ -746,9 +675,17 @@ h6,
 /* Styles for section images */
 .section-image {
     width: 100%;
-    height: 400px;
-    /* Altura fija para desktop */
+    height: auto;
+    aspect-ratio: 3/2;
     object-fit: cover;
+    background-color: var(--primary-soft);
+    /* Placeholder color while loading */
+}
+
+@media (min-width: 992px) {
+    .section-image {
+        height: 400px;
+    }
 }
 
 @media (max-width: 992px) {
