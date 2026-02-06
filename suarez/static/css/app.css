@@ -530,6 +530,11 @@ h6,
     animation: fadeIn 1s ease-out;
 }
 
+/* Static fade-in to avoid CLS on above-the-fold elements */
+.animate-fade-static {
+    animation: fadeInStatic 0.8s ease-out forwards;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -539,6 +544,16 @@ h6,
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeInStatic {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 
