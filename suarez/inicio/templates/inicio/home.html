@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load youtube_tags %}
+{% load image_utils %}
 
 {% block title %}Suárez, Cauca - Caficultura y Tradición{% endblock %}
 
@@ -9,14 +10,15 @@ territorio cafetero.{% endblock %}
 
 {% block extra_head %}
 {% if banner.imagen_fondo %}
-<link rel="preload" as="image" href="{{ banner.imagen_fondo.url }}" fetchpriority="high">
+{% webp_url banner.imagen_fondo.url as banner_webp %}
+<link rel="preload" as="image" href="{{ banner_webp }}" fetchpriority="high">
 {% endif %}
 {% endblock %}
 
 {% block content %}
 <!-- Banner Hero Dinámico -->
-<section class="hero-institution animate-fade" {% if banner.imagen_fondo %}
-    style="--hero-bg: url('{{ banner.imagen_fondo.url }}'); padding: 150px 0 100px;" {% endif %}>
+<section class="hero-institution animate-fade" {% if banner.imagen_fondo %} {% webp_url banner.imagen_fondo.url as
+    banner_webp %} style="--hero-bg: url('{{ banner_webp }}'); padding-top: 140px; padding-bottom: 80px;" {% endif %}>
     <div class="container hero-content text-center position-relative z-2">
         <div class="row justify-content-center">
             <div class="col-lg-10">
@@ -247,7 +249,7 @@ territorio cafetero.{% endblock %}
                         </iframe>
                     </div>
                     <div class="text-center mt-4">
-                        <h4 class="fw-bold text-navy mb-4">{{ video.titulo }}</h4>
+                        <h3 class="fw-bold text-navy mb-4 h4">{{ video.titulo }}</h3>
                         <div class="d-flex justify-content-center">
                             <a href="{{ video.url_embebida }}" target="_blank"
                                 class="btn btn-danger btn-lg rounded-pill px-4 shadow-sm fw-bold">
@@ -281,11 +283,12 @@ territorio cafetero.{% endblock %}
 
                         <div class="carousel-gallery-item">
                             <div class="gallery-item-wrapper shadow-premium">
-                                <img src="{{ img.imagen.url }}" class="gallery-img" alt="{{ img.titulo }}" width="400"
+                                {% webp_url img.imagen.url as img_webp %}
+                                <img src="{{ img_webp }}" class="gallery-img" alt="{{ img.titulo }}" width="400"
                                     height="400" loading="lazy">
                                 {% if img.titulo %}
                                 <div class="gallery-caption-overlay text-center">
-                                    <h5 class="fw-bold mb-0 text-white fs-4">{{ img.titulo }}</h5>
+                                    <h3 class="fw-bold mb-0 text-white fs-4">{{ img.titulo }}</h3>
                                 </div>
                                 {% endif %}
                             </div>
@@ -298,10 +301,12 @@ territorio cafetero.{% endblock %}
                 {% endfor %}
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev"
+                aria-label="Anterior">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next"
+                aria-label="Siguiente">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </button>
         </div>
