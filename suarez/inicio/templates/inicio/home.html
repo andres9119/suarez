@@ -12,6 +12,8 @@ territorio cafetero.{% endblock %}
 {% if banner.imagen_fondo %}
 {% webp_url banner.imagen_fondo.url as banner_webp %}
 <link rel="preload" as="image" href="{{ banner_webp }}" fetchpriority="high">
+{% else %}
+<link rel="preload" as="image" href="{% static 'img/bienvenidos.webp' %}" fetchpriority="high">
 {% endif %}
 {% endblock %}
 
@@ -22,38 +24,34 @@ territorio cafetero.{% endblock %}
 {% else %}
 {% static 'img/bienvenidos.webp' as hero_img %}
 {% endif %}
-<section class="hero-institution animate-fade-static"
-    style="background-image:linear-gradient(rgba(0,37,26,0.6),rgba(0,37,26,0.4)),url('{{ hero_img }}');padding-top:140px;padding-bottom:80px;">
-    <div class="container hero-content text-center position-relative z-2" style="min-height: 400px;">
+<section class="hero-institution animate-fade-static">
+    <!-- Background Layer -->
+    <img src="{{ hero_img }}" alt="Paisaje de Suárez" class="hero-bg-img" fetchpriority="high" loading="eager"
+        width="1920" height="1080">
+    <div class="hero-overlay"></div>
+
+    <!-- Content Layer -->
+    <div class="container hero-content text-center">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <span
                     class="badge bg-accent text-navy mb-4 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Suárez
                     100% café</span>
-                <h1 class="display-2 fw-bold mb-4 text-white" style="min-height: 1.2em;">
-                    {% if banner %}
-                    {{ banner.titulo }}
-                    {% else %}
-                    Bienvenidos a <span style="color: var(--accent);">Suárez</span>
-                    {% endif %}
+                <h1 class="display-2 fw-bold mb-4 text-white">
+                    {% if banner %}{{ banner.titulo }}{% else %}Bienvenidos a <span
+                        style="color: var(--accent);">Suárez</span>{% endif %}
                 </h1>
-                <p class="lead fs-4 opacity-90 mb-5 text-white col-md-8 mx-auto" style="min-height: 3em;">
-                    {% if banner %}
-                    {{ banner.subtitulo }}
-                    {% else %}
-                    Tierra de paz, cultura y el aroma inigualable de nuestro café. Conoce lo mejor de nuestro
-                    territorio.
-                    {% endif %}
+                <p class="lead fs-4 opacity-90 mb-5 text-white col-md-8 mx-auto">
+                    {% if banner %}{{ banner.subtitulo }}{% else %}Tierra de paz, cultura y el aroma inigualable de
+                    nuestro café. Conoce lo mejor de nuestro territorio.{% endif %}
                 </p>
                 <div class="d-flex gap-3 justify-content-center flex-wrap">
                     {% if banner %}
-                    <a href="{{ banner.link_boton }}" class="btn-premium text-decoration-none">
-                        {{ banner.texto_boton }} <i class="bi bi-chevron-right ms-2"></i>
-                    </a>
+                    <a href="{{ banner.link_boton }}" class="btn-premium text-decoration-none">{{ banner.texto_boton }}
+                        <i class="bi bi-chevron-right ms-2"></i></a>
                     {% else %}
-                    <a href="{% url 'noticias:lista' %}" class="btn-premium text-decoration-none">
-                        Ver Actualidad <i class="bi bi-newspaper ms-2"></i>
-                    </a>
+                    <a href="{% url 'noticias:lista' %}" class="btn-premium text-decoration-none">Ver Actualidad <i
+                            class="bi bi-newspaper ms-2"></i></a>
                     {% endif %}
                     <a href="{% url 'contacto:index' %}"
                         class="btn btn-outline-light btn-lg rounded-pill px-5 border-2 fw-bold">Contactar</a>

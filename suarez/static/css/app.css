@@ -25,8 +25,13 @@
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
+    font-display: swap;
     color: #333333;
     line-height: 1.7;
     background-color: var(--light);
@@ -40,6 +45,7 @@ h5,
 h6,
 .fw-bold {
     font-family: 'Montserrat', sans-serif;
+    font-display: swap;
     color: var(--navy);
 }
 
@@ -47,14 +53,23 @@ h6,
     font-weight: 900 !important;
 }
 
+/* --- Global Image Rules --- */
+img {
+    height: auto;
+    max-width: 100%;
+}
+
 /* --- Header & Navigation --- */
 .navbar-custom {
     background: var(--glass);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 1rem 0;
+    padding: 1.25rem 0;
+    /* Slightly more space to prevent shifts */
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 80px;
+    /* Constant height for navbar */
 }
 
 .navbar-brand {
@@ -270,18 +285,41 @@ h6,
 /* --- Hero Section --- */
 .hero-institution {
     position: relative;
-    background-color: var(--navy);
-    /* Fallback color for LCP */
-    background-image: linear-gradient(rgba(0, 37, 26, 0.6), rgba(0, 37, 26, 0.4)), var(--hero-bg, url('../img/bienvenidos.webp'));
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-    min-height: 80vh;
+    overflow: hidden;
+    min-height: 600px;
     padding-top: 140px;
-    padding-bottom: 120px;
+    padding-bottom: 80px;
+    background-color: var(--navy);
     display: flex;
     align-items: center;
+    color: white;
+}
+
+.hero-bg-img {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 37, 26, 0.6), rgba(0, 37, 26, 0.4));
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
 }
 
 /* --- Shape Divider --- */
@@ -380,6 +418,8 @@ h6,
     border-radius: 24px;
     overflow: hidden;
     height: 400px;
+    aspect-ratio: 1/1;
+    /* Reserved space */
     box-shadow: var(--shadow-soft);
 }
 
@@ -387,6 +427,8 @@ h6,
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 1/1;
+    /* Reserved space */
     transition: transform 0.8s ease;
 }
 
@@ -601,6 +643,8 @@ h6,
     width: 100%;
     padding-top: 65%;
     /* Aspect ratio 16:9 for image area */
+    aspect-ratio: 16/9;
+    /* Reserved space */
     background-size: cover;
     background-position: center;
     position: relative;
@@ -688,6 +732,8 @@ h6,
         padding-top: 0;
         height: 150px;
         /* Fixed height for mobile image */
+        aspect-ratio: 4/3;
+        /* Adjust if needed */
         border-bottom: none;
         border-right: 5px solid var(--accent-soft);
     }

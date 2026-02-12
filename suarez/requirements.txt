@@ -9,3 +9,4 @@ pymysql==1.1.0
 
 xhtml2pdf==0.2.17
 reportlab==4.4.9
+whitenoise==6.8.2

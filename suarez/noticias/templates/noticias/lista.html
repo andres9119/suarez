@@ -8,7 +8,7 @@ comunicados y actividades de Suárez 100% café.{% endblock %}
 
 {% block content %}
 <div class="hero-institution animate-fade-static bg-suarez-hero"
-    style="min-height: 400px; padding: 100px 0 120px; position: relative;">
+    style="min-height: 480px; padding: 100px 0 120px; position: relative; background-color: var(--navy);">
     <div class="container text-center position-relative z-2">
         <span
             class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Actualidad</span>
@@ -56,7 +56,7 @@ comunicados y actividades de Suárez 100% café.{% endblock %}
                         {% if noticia.imagen_destacada %}
                         {% webp_url noticia.imagen_destacada.url as noticia_webp %}
                         <img src="{{ noticia_webp }}" class="img-fluid" width="400" height="300"
-                            style="object-fit: contain; max-height: 100%; width: 100%; aspect-ratio: 4/3; transition: transform 0.5s ease;"
+                            style="object-fit: contain; max-height: 300px; width: 100%; aspect-ratio: 4/3; transition: transform 0.5s ease;"
                             alt="{{ noticia.titulo }}" loading="lazy">
                         {% else %}
                         <div class="w-100 h-100 d-flex align-items-center justify-content-center">
