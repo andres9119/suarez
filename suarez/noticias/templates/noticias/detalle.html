@@ -36,7 +36,9 @@ noticia.imagen_destacada.url }}{% endif %}{% endblock %}
         class="mb-5 position-relative rounded-4 overflow-hidden shadow-lg bg-light d-flex align-items-center justify-content-center"
         style="min-height: 300px; max-height: 600px;">
         {% webp_url noticia.imagen_destacada.url as noticia_webp %}
-        <img src="{{ noticia_webp }}" class="img-fluid" width="800" height="600"
+        {% get_srcset noticia_webp as srcset %}
+        <img src="{% version_url noticia_webp 800 %}" srcset="{{ srcset }}" sizes="(max-width: 768px) 100vw, 800px"
+          class="img-fluid" width="800" height="600"
           style="max-height: 600px; width: 100%; height: auto; object-fit: contain; aspect-ratio: 4/3;"
           alt="{{ noticia.titulo }}" loading="lazy">
         {% if noticia.es_evento %}

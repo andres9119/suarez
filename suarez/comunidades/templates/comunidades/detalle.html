@@ -19,7 +19,8 @@
         <div class="row align-items-center">
             <div class="col-md-2 text-center text-md-start">
                 {% if comunidad.logo_o_emblema %}
-                <img src="{{ comunidad.logo_o_emblema.url }}"
+                {% get_srcset comunidad.logo_o_emblema.url as srcset %}
+                <img src="{% version_url comunidad.logo_o_emblema.url 400 %}" srcset="{{ srcset }}" sizes="140px"
                     class="rounded-circle shadow-lg border border-3 border-white mb-3 mb-md-0"
                     style="width: 140px; height: 140px; object-fit: cover;" alt="{{ comunidad.nombre }}" loading="lazy">
                 {% endif %}
@@ -76,7 +77,9 @@
                     <div class="carousel-inner">
                         {% for img in comunidad.imagenes.all %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{ img.imagen.url }}" class="d-block w-100"
+                            {% get_srcset img.imagen.url as srcset %}
+                            <img src="{% version_url img.imagen.url 800 %}" srcset="{{ srcset }}"
+                                sizes="(max-width: 768px) 100vw, 50vw" class="d-block w-100"
                                 style="height: 450px; object-fit: cover;" alt="{{ img.descripcion }}" loading="lazy">
                             {% if img.descripcion %}
                             <div class="carousel-caption d-none d-md-block"

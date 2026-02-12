@@ -30,4 +30,20 @@ document.addEventListener('DOMContentLoaded', function () {
             [].slice.call(tooltips).map(el => new bootstrap.Tooltip(el));
         }
     }
+    // Lite YouTube Embeds
+    document.addEventListener('click', function (e) {
+        const target = e.target.closest('.lite-youtube');
+        if (target && !target.querySelector('iframe')) {
+            const videoId = target.getAttribute('data-video-id');
+            target.innerHTML = `
+                <iframe 
+                    src="https://www.youtube.com/embed/${videoId}?rel=0" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="${target.getAttribute('aria-label') || 'YouTube Video'}">
+                </iframe>`;
+        }
+    });
 });

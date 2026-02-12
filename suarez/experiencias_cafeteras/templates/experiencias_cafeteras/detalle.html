@@ -85,11 +85,14 @@
                     {% if experiencia.video_url %}
                     <div class="mt-5">
                         <h4 class="fw-bold mb-3 small text-uppercase text-muted">Acompaña el recorrido:</h4>
-                        <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
-                            <iframe src="{{ experiencia.video_url|youtube_embed }}" title="Recorrido Visual"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen>
-                            </iframe>
+                        <div class="rounded-4 overflow-hidden shadow">
+                            {% with vid_id=experiencia.video_url|youtube_id %}
+                            <div class="lite-youtube" data-video-id="{{ vid_id }}"
+                                style="background-image: url('https://i.ytimg.com/vi/{{ vid_id }}/hqdefault.jpg');"
+                                aria-label="Reproducir Recorrido Visual de {{ experiencia.titulo }}">
+                                <button type="button" class="lty-playbtn" aria-label="Reproducir Video"></button>
+                            </div>
+                            {% endwith %}
                         </div>
                     </div>
                     {% endif %}

@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import secrets
+from csp.constants import NONCE
 
 load_dotenv()
 
@@ -50,11 +51,13 @@ INSTALLED_APPS = [
     'documentos',
     'contacto',
     'django.contrib.sitemaps',
+    'csp',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -160,6 +163,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'  # Para producción
 # WhiteNoise configuration
 WHITENOISE_MAX_AGE = 31536000  # 1 año
 WHITENOISE_MANIFEST_STRICT = False
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STORAGES = {
     "default": {
@@ -228,3 +232,17 @@ CSRF_COOKIE_HTTPONLY = True
 # File Upload Security
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
+
+# Content Security Policy (CSP) - New Format for django-csp 4.0+
+CONTENT_SECURITY_POLICY = {
+    'DIRECTIVES': {
+        'default-src': ["'self'"],
+        'style-src': ["'self'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "'unsafe-inline'", NONCE],
+        'font-src': ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net"],
+        'script-src': ["'self'", "https://www.googletagmanager.com", "https://cdn.jsdelivr.net", "'unsafe-inline'", NONCE],
+        'img-src': ["'self'", "https://i.ytimg.com", "data:", "https://www.google-analytics.com"],
+        'frame-src': ["'self'", "https://www.youtube.com", "https://www.youtube-nocookie.com"],
+        'connect-src': ["'self'", "https://www.google-analytics.com", "https://stats.g.doubleclick.net"],
+    }
+}
+CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]

@@ -26,8 +26,11 @@ territorio cafetero.{% endblock %}
 {% endif %}
 <section class="hero-institution animate-fade-static">
     <!-- Background Layer -->
-    <img src="{{ hero_img }}" alt="Paisaje de Suárez" class="hero-bg-img" fetchpriority="high" loading="eager"
-        width="1920" height="1080">
+    <!-- Background Layer -->
+    {% version_url hero_img 1200 as hero_src %}
+    {% get_srcset hero_img as hero_srcset %}
+    <img src="{{ hero_src }}" srcset="{{ hero_srcset }}" sizes="100vw" alt="Paisaje de Suárez" class="hero-bg-img"
+        fetchpriority="high" loading="eager" width="1920" height="1080">
     <div class="hero-overlay"></div>
 
     <!-- Content Layer -->
@@ -119,8 +122,10 @@ territorio cafetero.{% endblock %}
                     transformando el futuro, reemplazando economías ilícitas por sueños de paz y sostenibilidad.</p>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="{% static 'img/comunidades_hero.webp' %}" alt="Historia y Esencia de Suárez" width="600"
-                    height="400" class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
+                {% static 'img/comunidades_hero.webp' as com_hero %}
+                <img src="{% version_url com_hero 800 %}" srcset="{% get_srcset com_hero %}"
+                    sizes="(max-width: 768px) 100vw, 50vw" alt="Historia y Esencia de Suárez" width="600" height="400"
+                    class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
             </div>
         </div>
 
@@ -134,7 +139,9 @@ territorio cafetero.{% endblock %}
                     grano representa dedicación, tradición y amor por la tierra.</p>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="{% static 'img/el_cafe_orgullo.webp' %}" alt="El Café: Orgullo de Nuestra Tierra" width="600"
+                {% static 'img/el_cafe_orgullo.webp' as cafe_orgullo %}
+                <img src="{% version_url cafe_orgullo 800 %}" srcset="{% get_srcset cafe_orgullo %}"
+                    sizes="(max-width: 768px) 100vw, 50vw" alt="El Café: Orgullo de Nuestra Tierra" width="600"
                     height="400" class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
             </div>
         </div>
@@ -150,8 +157,10 @@ territorio cafetero.{% endblock %}
                     enriquecen la identidad local con su música, su historia y su resistencia cultural.</p>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="{% static 'img/cafeterasfondo.webp' %}" alt="Diversidad Cultural y Ancestral de Suárez"
-                    width="600" height="400" class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
+                {% static 'img/cafeterasfondo.webp' as cult_hero %}
+                <img src="{% version_url cult_hero 800 %}" srcset="{% get_srcset cult_hero %}"
+                    sizes="(max-width: 768px) 100vw, 50vw" alt="Diversidad Cultural y Ancestral de Suárez" width="600"
+                    height="400" class="img-fluid rounded-5 shadow-sm section-image" loading="lazy">
             </div>
         </div>
 
@@ -246,11 +255,14 @@ territorio cafetero.{% endblock %}
             {% for video in videos %}
             <div class="col-lg-10 col-xl-8">
                 <div class="video-item mb-5 p-4 bg-white rounded-5 shadow-premium">
-                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm bg-black">
-                        <iframe src="{{ video.url_embebida|youtube_embed }}" title="{{ video.titulo }}"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="no-referrer-when-downgrade" frameborder="0" allowfullscreen>
-                        </iframe>
+                    <div class="rounded-4 overflow-hidden shadow-sm bg-black">
+                        {% with vid_id=video.url_embebida|youtube_id %}
+                        <div class="lite-youtube" data-video-id="{{ vid_id }}"
+                            style="background-image: url('https://i.ytimg.com/vi/{{ vid_id }}/hqdefault.jpg');"
+                            aria-label="Reproducir {{ video.titulo }}">
+                            <button type="button" class="lty-playbtn" aria-label="Reproducir Video"></button>
+                        </div>
+                        {% endwith %}
                     </div>
                     <div class="text-center mt-4">
                         <h3 class="fw-bold text-navy mb-4 h4">{{ video.titulo }}</h3>
@@ -288,8 +300,10 @@ territorio cafetero.{% endblock %}
                         <div class="carousel-gallery-item">
                             <div class="gallery-item-wrapper shadow-premium">
                                 {% webp_url img.imagen.url as img_webp %}
-                                <img src="{{ img_webp }}" class="gallery-img" alt="{{ img.titulo }}" width="400"
-                                    height="400" loading="lazy">
+                                {% get_srcset img_webp as srcset %}
+                                <img src="{% version_url img_webp 800 %}" srcset="{{ srcset }}"
+                                    sizes="(max-width: 768px) 100vw, 33vw" class="gallery-img" alt="{{ img.titulo }}"
+                                    width="400" height="400" loading="lazy">
                                 {% if img.titulo %}
                                 <div class="gallery-caption-overlay text-center">
                                     <h3 class="fw-bold mb-0 text-white fs-4">{{ img.titulo }}</h3>

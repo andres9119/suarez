@@ -40,3 +40,41 @@ def webp_url(image_url):
         return f"{base_url}.webp"
     
     return image_url
+
+@register.simple_tag
+def version_url(image_url, size=None):
+    """
+    Returns the URL for a specific sized version of an image.
+    Usage: {% version_url image_url 800 %}
+    """
+    if not image_url:
+        return ''
+    
+    # Ensure we use webp variant
+    base_url, ext = os.path.splitext(image_url)
+    if not base_url.lower().endswith('.webp'):
+        webp_variant = f"{base_url}.webp"
+    else:
+        webp_variant = image_url
+        base_url = os.path.splitext(image_url)[0]
+
+    if size:
+        return f"{base_url}_{size}.webp"
+    return webp_variant
+
+@register.simple_tag
+def get_srcset(image_url):
+    """
+    Generates a srcset string for the provided image URL.
+    """
+    if not image_url:
+        return ''
+    
+    base_url, _ = os.path.splitext(image_url)
+    # Remove .webp if it was already there for the base name
+    if base_url.lower().endswith('.webp'):
+        base_name = base_url[:-5]
+    else:
+        base_name = base_url
+
+    return f"{base_name}_400.webp 400w, {base_name}_800.webp 800w, {base_name}_1200.webp 1200w"

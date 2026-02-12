@@ -26,46 +26,6 @@
     <!-- Language and Schema -->
     <meta property="og:locale" content="es_CO">
 
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMRT2VBTL3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        // Delay GA initialization to give priority to main content
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(function () {
-                gtag('config', 'G-QMRT2VBTL3');
-            });
-        } else {
-            setTimeout(function () {
-                gtag('config', 'G-QMRT2VBTL3');
-            }, 2000);
-        }
-    </script>
-
-    <!-- Organization Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "GovernmentOrganization",
-        "name": "Suárez 100% café, Cauca",
-        "url": "{{ request.scheme }}://{{ request.get_host }}",
-        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.webp' %}",
-        "description": "Portal de la cultura y tradición de Suárez 100% café, Cauca",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Suárez",
-            "addressRegion": "Cauca",
-            "addressCountry": "CO"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service"
-        }
-    }
-    </script>
 
     <link rel="icon" href="{% static 'img/logo_cafe_suarez.webp' %}" type="image/webp">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/logo_cafe_suarez.webp' %}">
@@ -97,20 +57,8 @@
     <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="preload" as="style" href="{% static 'css/app.css' %}">
 
-    <!-- Critical CSS (Non-blocking bootstrap and fonts loaded via pattern) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" media="print"
-        onload="this.media='all'">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet" media="all">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-        media="print" onload="this.media='all'">
-
-    <!-- App CSS (Combined main and accessibility) -->
-    <link href="{% static 'css/app.css' %}?v=3" rel="stylesheet" media="all">
-
-    <style>
-        /* Critical CSS for faster FCP */
+    <!-- Critical CSS (Inlined for Performance) -->
+    <style nonce="{{ request.csp_nonce }}">
         :root {
             --primary: #2d5a27;
             --primary-soft: #edf4ec;
@@ -127,6 +75,7 @@
             background-color: var(--light);
             color: #333;
             margin: 0;
+            line-height: 1.7;
         }
 
         .navbar-custom {
@@ -135,6 +84,36 @@
             -webkit-backdrop-filter: blur(10px);
             padding: 1rem 0;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-institution {
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background-color: var(--navy);
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-bg-img {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .section-padding {
+            padding: 100px 0;
         }
 
         .section-title {
@@ -142,8 +121,22 @@
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--navy);
+            margin-bottom: 3rem;
         }
     </style>
+
+    <!-- External Dependencies (Restored Bootstrap CDN for Layout Integrity) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        nonce="{{ request.csp_nonce }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet" nonce="{{ request.csp_nonce }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet"
+        nonce="{{ request.csp_nonce }}">
+
+    <!-- App CSS (Standard load for CSP stability) -->
+    <link href="{% static 'css/app.css' %}?v=3" rel="stylesheet" nonce="{{ request.csp_nonce }}">
+
     {% block extra_head %}{% endblock %}
     {% block extra_css %}{% endblock %}
 </head>
@@ -297,45 +290,56 @@
         </div>
     </footer>
 
+
     <!-- Structured Data - Organization -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "GovernmentOrganization",
-      "name": "Suárez 100% café",
-      "alternateName": "Suárez 100% café, Cauca",
-      "url": "{{ request.scheme }}://{{ request.get_host }}",
-      "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.webp' %}",
-      "description": "Portal de la cultura, café y tradición de Suárez, Cauca.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Suárez",
-        "addressRegion": "Cauca",
-        "addressCountry": "CO"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "email": "atencionalciudadano@suarez-cauca.gov.co",
-        "availableLanguage": "Spanish"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Suárez, Cauca"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "2.9586",
-        "longitude": "-76.3819"
-      }
+        "@context": "https://schema.org",
+        "@type": "GovernmentOrganization",
+        "name": "Suárez 100% café, Cauca",
+        "url": "{{ request.scheme }}://{{ request.get_host }}",
+        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_cafe_suarez.webp' %}",
+        "description": "Portal de la cultura, café y tradición de Suárez, Cauca.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Suárez",
+            "addressRegion": "Cauca",
+            "addressCountry": "CO"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "atencionalciudadano@suarez-cauca.gov.co",
+            "availableLanguage": "Spanish"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Suárez, Cauca"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "2.9586",
+            "longitude": "-76.3819"
+        }
     }
+    </script>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMRT2VBTL3"></script>
+    <script nonce="{{ request.csp_nonce }}">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-QMRT2VBTL3');
     </script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
     <!-- Custom JS -->
     <script src="{% static 'js/main.js' %}" defer></script>
     <script src="{% static 'js/accessibility.js' %}" defer></script>
+
     {% block extra_js %}{% endblock %}
 </body>
 

@@ -55,7 +55,9 @@ comunicados y actividades de Suárez 100% café.{% endblock %}
                         style="min-height: 250px;">
                         {% if noticia.imagen_destacada %}
                         {% webp_url noticia.imagen_destacada.url as noticia_webp %}
-                        <img src="{{ noticia_webp }}" class="img-fluid" width="400" height="300"
+                        {% get_srcset noticia_webp as srcset %}
+                        <img src="{% version_url noticia_webp 800 %}" srcset="{{ srcset }}"
+                            sizes="(max-width: 768px) 100vw, 50vw" class="img-fluid" width="400" height="300"
                             style="object-fit: contain; max-height: 300px; width: 100%; aspect-ratio: 4/3; transition: transform 0.5s ease;"
                             alt="{{ noticia.titulo }}" loading="lazy">
                         {% else %}

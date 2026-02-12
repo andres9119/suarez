@@ -14,38 +14,43 @@ def youtube_embed(url):
     if not url:
         return ""
     
-    # Extract ID
+def get_youtube_id(url):
+    if not url:
+        return None
     video_id = None
     
-    # Pattern 1: youtu.be/ID
+    # Standard patterns
     if "youtu.be/" in url:
         video_id = url.split("youtu.be/")[1].split("?")[0].split("&")[0]
-    
-    # Pattern 2: watch?v=ID
     elif "v=" in url:
-        # Get the 'v' parameter specifically
-        parts = url.split("?")
-        if len(parts) > 1:
-            params = parts[1].split("&")
-            for p in params:
-                if p.startswith("v="):
-                    video_id = p.split("=")[1]
-                    break
-        # Fallback split if complex
-        if not video_id:
-            video_id = url.split("v=")[1].split("&")[0]
-        
-    # Pattern 3: shorts/, live/, embed/, v/
-    else:
+        # Use regex for more reliability with complex URLs
+        match = re.search(r"[?&]v=([^&]+)", url)
+        if match:
+            video_id = match.group(1)
+            
+    # If not found, look for common path components
+    if not video_id:
         for tag in ["/shorts/", "/live/", "/embed/", "/v/"]:
             if tag in url:
                 video_id = url.split(tag)[1].split("?")[0].split("&")[0]
                 break
+                
+    # Final fallback: generic ID detection (11 chars, no slashes/dots)
+    if not video_id:
+        # Clean the string from potential wrapper characters
+        cleaned = url.strip().split('/')[-1].split('?')[0].split('&')[0]
+        if len(cleaned) == 11:
+            video_id = cleaned
+            
+    return video_id.strip()[:11] if video_id else None
 
+@register.filter(name='youtube_id')
+def youtube_id(url):
+    return get_youtube_id(url)
+
+@register.filter(name='youtube_embed')
+def youtube_embed(url):
+    video_id = get_youtube_id(url)
     if video_id:
-        # Standardize ID (YouTube IDs are 11 chars)
-        video_id = video_id.strip()[:11]
-        # Using the standard domain as some browsers are stricter with nocookie origins
-        return f"https://www.youtube.com/embed/{video_id}?autoplay=0&rel=0&showinfo=0&modestbranding=1"
-    
+        return f"https://www.youtube.com/embed/{video_id}?autoplay=0&rel=0"
     return url
