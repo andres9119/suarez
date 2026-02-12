@@ -163,6 +163,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'  # Para producción
 # WhiteNoise configuration
 WHITENOISE_MAX_AGE = 31536000  # 1 año
 WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STORAGES = {
