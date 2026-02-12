@@ -29,6 +29,9 @@ sitemaps = {
     'comunidades': ComunidadSitemap,
 }
 
+from django.urls import path, include, re_path
+from django.views.static import serve
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('robots.txt', robots_txt, name='robots_txt'),
@@ -41,7 +44,10 @@ urlpatterns = [
     path('contacto/', include('contacto.urls')),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Servir Media SIEMPRE (incluso en producción con DEBUG=False)
+urlpatterns += [
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
