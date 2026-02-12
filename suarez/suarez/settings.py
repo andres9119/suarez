@@ -237,12 +237,12 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 CONTENT_SECURITY_POLICY = {
     'DIRECTIVES': {
         'default-src': ["'self'"],
-        'style-src': ["'self'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "'unsafe-inline'", NONCE],
+        'style-src': ["'self'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
         'font-src': ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net"],
         'script-src': ["'self'", "https://www.googletagmanager.com", "https://cdn.jsdelivr.net", "'unsafe-inline'", NONCE],
         'img-src': ["'self'", "https://i.ytimg.com", "data:", "https://www.google-analytics.com"],
         'frame-src': ["'self'", "https://www.youtube.com", "https://www.youtube-nocookie.com"],
-        'connect-src': ["'self'", "https://www.google-analytics.com", "https://stats.g.doubleclick.net"],
+        'connect-src': ["'self'", "https://www.google-analytics.com", "https://stats.g.doubleclick.net", "https://cdn.jsdelivr.net"],
     }
 }
-CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+CSP_INCLUDE_NONCE_IN = ["script-src"] # Solo scripts necesitan nonce estricto, styles necesitan permitir atributos style=""
