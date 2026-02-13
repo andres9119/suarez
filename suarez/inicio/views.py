@@ -20,6 +20,9 @@ def home(request):
         'eventos': eventos
     })
 
+def historia(request):
+    return render(request, 'inicio/historia.html')
+
 def buscar(request):
     query = request.GET.get('q', '')
     filter_type = request.GET.get('type', 'all')

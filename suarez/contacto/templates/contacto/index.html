@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Contacto - Suárez 100% café{% endblock %}
+{% block title %}Contacto de Suárez, Cauca – Atención al Ciudadano{% endblock %}
 
-{% block meta_description %}Ponte en contacto con Suárez 100% café, Cauca. Conoce más sobre nuestra cultura, café y
-comunidades.{% endblock %}
+{% block meta_description %}Consulta nuestros canales de atención, correo institucional y horarios de servicio al
+ciudadano.{% endblock %}
 
 {% block content %}
 <div class="hero-institution animate-fade bg-suarez-hero" style="min-height: auto; padding: 60px 0 40px;">
     <div class="container text-center" style="margin-top: 40px;">
         <span
             class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Atención</span>
-        <h1 class="fw-extrabold mb-3 text-white" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">Ponte en
-            Contacto</h1>
+        <h1 class="fw-extrabold mb-3 text-white" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">Contacto
+            – Suárez, Cauca</h1>
 
         <!-- Breadcrumbs -->
         <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-4">
@@ -78,7 +78,11 @@ comunidades.{% endblock %}
                                         required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-premium w-100 py-3 mt-3">Enviar Mensaje <i
+                                    <p class="small text-muted mb-3">
+                                        Al enviar este formulario aceptas el tratamiento de tus datos personales
+                                        conforme a la política de privacidad del municipio.
+                                    </p>
+                                    <button type="submit" class="btn btn-premium w-100 py-3">Enviar Mensaje <i
                                             class="bi bi-send-fill ms-2"></i></button>
                                 </div>
                             </div>
@@ -160,5 +164,16 @@ comunidades.{% endblock %}
             </div>
         </div>
     </div>
+</div>
+<section class="container mt-5 mb-5">
+    <div class="bg-white p-5 rounded-5 shadow-premium text-center animate-fade">
+        <h2 class="section-title mb-4">Compromiso con la Atención Ciudadana</h2>
+        <p class="lead text-muted mx-auto col-md-10 fs-5">
+            En Suárez, Cauca, trabajamos para fortalecer la comunicación directa
+            con la comunidad. Tu participación y tus inquietudes son fundamentales
+            para construir un municipio más transparente y participativo.
+        </p>
+    </div>
+</section>
 </div>
 {% endblock %}

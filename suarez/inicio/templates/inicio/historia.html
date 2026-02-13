@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load image_utils %}
+
+{% block title %}Historia de Suárez, Cauca – Origen, Cultura y Tradición Cafetera{% endblock %}
+
+{% block meta_description %}Descubre la historia de Suárez, Cauca: su fundación, diversidad cultural y tradición
+cafetera en el norte del departamento del Cauca, Colombia.{% endblock %}
+
+{% block meta_keywords %}historia de suarez cauca, municipio de suarez cauca, origen de suarez, caficultura en suarez
+cauca, norte del cauca{% endblock %}
+
+{% block og_title %}Historia de Suárez, Cauca – Origen y Tradición{% endblock %}
+{% block og_description %}Conoce el origen, desarrollo caficultor y riqueza cultural de Suárez, Cauca.{% endblock %}
+
+{% block extra_head %}
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Caficultura Suárez">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+{% endblock %}
+
+{% block content %}
+<section class="section-padding bg-light animate-fade-static">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'inicio:home' %}"
+                                class="text-decoration-none">Inicio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Historia</li>
+                    </ol>
+                </nav>
+
+                <h1 class="display-3 fw-bold mb-5 text-primary">Historia de Suárez, Cauca</h1>
+
+                <!-- Bloque de Datos Destacados -->
+                <div class="bg-primary-soft p-4 rounded-4 mb-5 border-start border-primary border-4 shadow-sm">
+                    <h2 class="h5 fw-bold text-primary mb-3"><i class="bi bi-info-circle me-2"></i>Datos clave del
+                        municipio</h2>
+                    <ul class="list-unstyled mb-0 row g-2">
+                        <li class="col-md-6"><strong>Ubicación:</strong> Norte del Cauca</li>
+                        <li class="col-md-6"><strong>Economía principal:</strong> Caficultura</li>
+                        <li class="col-md-6"><strong>Diversidad étnica:</strong> Afrodescendiente, indígena y campesina
+                        </li>
+                        <li class="col-md-6"><strong>Recurso hídrico:</strong> Embalse La Salvajina</li>
+                    </ul>
+                </div>
+
+                <article class="content-rich shadow-sm p-4 p-md-5 bg-white rounded-4 leading-relaxed">
+                    <p class="lead fs-4 mb-5">
+                        <strong>Suárez, Cauca</strong> es un estratégico <strong>municipio del norte del departamento
+                            del Cauca</strong>, reconocido por su inmensa biodiversidad, su legado caficultor y su
+                        vibrante tejido multicultural. Ubicado en una zona de transición entre las montañas y los valles
+                        del suroccidente colombiano, Suárez representa la fortaleza y resiliencia de un territorio que
+                        ha sabido transformar su historia en un motor de desarrollo sostenible y esperanza.
+                    </p>
+
+                    <h2 class="h2 fw-bold mt-5 mb-4 text-navy">Fundación y Origen de Suárez</h2>
+                    <h3 class="h5 fw-bold text-primary mb-3">Contexto precolonial y primeros asentamientos</h3>
+                    <p>
+                        El <strong>origen de Suárez, Cauca</strong> se cimenta sobre siglos de ocupación de comunidades
+                        que han habitado estas tierras mucho antes de la organización administrativa moderna.
+                        Históricamente, el territorio ha sido hogar de la <strong>comunidad indígena Nasa</strong>,
+                        quienes mantienen una relación sagrada con el entorno natural, y de <strong>comunidades
+                            afrodescendientes</strong> que llegaron al norte del Cauca, aportando su fuerza, cultura y
+                        saberes ancestrales al desarrollo de la región.
+                    </p>
+                    <h3 class="h5 fw-bold text-primary mb-3">Proceso de municipalización</h3>
+                    <p>
+                        La <strong>fundación de Suárez</strong> como entidad municipal independiente es el resultado de
+                        un largo proceso de gestión por parte de líderes locales que buscaban autonomía administrativa
+                        para atender las necesidades específicas de su población rural y urbana. Anteriormente vinculado
+                        a otras jurisdicciones, su consolidación permitió fortalecer la identidad local y potenciar
+                        recursos propios para mejorar la calidad de vida de sus habitantes.
+                    </p>
+
+                    <h2 class="h2 fw-bold mt-5 mb-4 text-navy">Desarrollo Agrícola y Caficultura</h2>
+                    <h3 class="h5 fw-bold text-primary mb-3">Economía cafetera moderna</h3>
+                    <p>
+                        La <strong>caficultura en Suárez, Cauca</strong> es el pilar fundamental de su economía. En las
+                        montañas suareñas, miles de familias campesinas, indígenas y afro se dedican con pasión al
+                        cultivo de cafés especiales. Este <strong>desarrollo histórico del norte del Cauca</strong> ha
+                        permitido que el municipio se destaque por la producción de granos con perfiles de taza
+                        excepcionales, apetecidos en mercados de comercio justo y especialidad.
+                    </p>
+                    <p>
+                        Si deseas conocer más sobre nuestras tradiciones productivas, puedes explorar nuestras <a
+                            href="{% url 'experiencias_cafeteras:lista' %}"
+                            class="text-primary fw-bold text-decoration-none">experiencias cafeteras</a>, donde la
+                        tradición y la innovación se encuentran.
+                    </p>
+
+                    <h2 class="h2 fw-bold mt-5 mb-4 text-navy">Transformación Social y el Embalse La Salvajina</h2>
+                    <h3 class="h5 fw-bold text-primary mb-3">Impacto socioeconómico del embalse</h3>
+                    <p>
+                        Un hito indiscutible en la historia reciente de Suárez es la construcción del <strong>Embalse La
+                            Salvajina</strong>. Esta megaobra de ingeniería no solo transformó el paisaje geográfico del
+                        municipio, sino que reconfiguró las dinámicas sociales y económicas del territorio. Si bien
+                        representó grandes desafíos para las comunidades locales, hoy es un recurso estratégico que
+                        ofrece oportunidades para el turismo de naturaleza y la generación de energía limpia.
+                    </p>
+                    <p>
+                        La transformación social de Suárez se refleja en su capacidad de organizarse y dialogar. La
+                        confluencia de saberes afro, nasa y campesinos ha creado una identidad rica y plural, donde la
+                        <a href="{% url 'noticias:lista' %}"
+                            class="text-primary fw-bold text-decoration-none">actualidad del municipio</a> se escribe
+                        bajo principios de convivencia y respeto por la diversidad étnica.
+                    </p>
+
+                    <h2 class="h2 fw-bold mt-5 mb-4 text-navy">Suárez en la Actualidad</h2>
+                    <p>
+                        En la actualidad, el <strong>municipio de Suárez, Cauca</strong> se proyecta hacia el futuro
+                        como un modelo de desarrollo territorial en el norte del departamento. Con una apuesta decidida
+                        por la educación agroambiental y el fortalecimiento de la cadena del café, el municipio sigue
+                        consolidándose como un territorio de paz y progreso.
+                    </p>
+
+                    <p class="mt-5 pt-3 border-top italic text-muted">
+                        En conclusión, la <strong>historia de Suárez, Cauca</strong> es un testimonio vivo de
+                        superación. Desde sus orígenes ancestrales hasta su consolidación como eje cafetero del norte
+                        del Cauca, su gente continúa construyendo un legado de identidad y trabajo que hace de Suárez un
+                        lugar único y lleno de significado en el corazón de Colombia.
+                    </p>
+                </article>
+
+                <div class="mt-5 text-center">
+                    <a href="{% url 'inicio:home' %}" class="btn btn-outline-primary btn-lg rounded-pill px-5 fw-bold">
+                        <i class="bi bi-arrow-left me-2"></i>Volver al Inicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .content-rich p {
+        margin-bottom: 1.5rem;
+        font-size: 1.15rem;
+        color: #4a4a4a;
+        line-height: 1.8;
+    }
+
+    .text-navy {
+        color: #00251a;
+    }
+
+    .breadcrumb-item a {
+        color: var(--primary);
+    }
+
+    .leading-relaxed {
+        line-height: 1.8;
+    }
+</style>
+{% endblock %}

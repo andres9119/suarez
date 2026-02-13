@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Documentos Públicos - Suárez 100% café{% endblock %}
+{% block title %}Documentos Públicos de Suárez, Cauca – Transparencia Municipal{% endblock %}
 
-{% block meta_description %}Accede a documentos públicos oficiales de Suárez, Cauca. Decretos, resoluciones, acuerdos y
-normativas municipales. Transparencia y acceso a la información.{% endblock %}
+{% block meta_description %}Accede a decretos, resoluciones, planes de desarrollo e informes oficiales del municipio de
+Suárez, Cauca. Transparencia y acceso a la información pública.{% endblock %}
 
 {% block content %}
 <div class="hero-institution animate-fade-static bg-suarez-hero"
@@ -12,7 +12,7 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
         <span
             class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">Transparencia</span>
         <h1 class="fw-extrabold mb-3 text-white" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">
-            Documentos Públicos</h1>
+            Documentos Públicos – Suárez, Cauca</h1>
 
         <!-- Breadcrumbs -->
         <nav aria-label="breadcrumb" class="d-flex justify-content-center mb-4">
@@ -23,8 +23,10 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
             </ol>
         </nav>
 
-        <p class="lead fs-4 fw-medium opacity-90 col-md-9 mx-auto text-white">Accede a la información oficial, decretos
-            y resoluciones de tu municipio de manera clara y directa.</p>
+        <p class="lead fs-4 fw-medium opacity-90 col-md-9 mx-auto text-white">Consulta los documentos oficiales del
+            municipio de Suárez, Cauca.
+            Aquí encontrarás decretos, resoluciones, planes de desarrollo,
+            informes de gestión y demás actos administrativos de interés público.</p>
     </div>
 
     <!-- Shape Divider -->
@@ -78,7 +80,7 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
                                 <th class="border-0 pb-4">Documento</th>
                                 <th class="border-0 pb-4">Categoría</th>
                                 <th class="border-0 pb-4">Fecha</th>
-                                <th class="border-0 pb-4 text-end">Acción</th>
+                                <th class="border-0 pb-4 text-end">Descargar</th>
                             </tr>
                         </thead>
                         <tbody class="border-top-0">
@@ -122,4 +124,15 @@ normativas municipales. Transparencia y acceso a la información.{% endblock %}
             </div>
         </div>
     </div>
-    {% endblock %}
+    <section class="container mb-5">
+        <div class="bg-white p-5 rounded-5 shadow-premium text-center animate-fade">
+            <h2 class="section-title mb-4">Compromiso con la Transparencia</h2>
+            <p class="lead text-muted mx-auto col-md-10 fs-5">
+                El municipio de Suárez, Cauca, garantiza el acceso a la información pública
+                conforme a los principios de transparencia y participación ciudadana.
+                Esta sección permite consultar documentos oficiales de manera clara y oportuna.
+            </p>
+        </div>
+    </section>
+</div>
+{% endblock %}

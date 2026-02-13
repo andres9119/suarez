@@ -115,11 +115,16 @@ territorio cafetero.{% endblock %}
         <div class="row align-items-center mb-5">
             <div class="col-lg-6">
                 <h3 class="fw-bold mb-3 text-primary"><i class="bi bi-geo-alt me-2"></i>Historia y Esencia</h3>
-                <p class="lead">Suárez, Cauca, es un territorio vibrante con 33,762 habitantes, donde el 81.6% de su
-                    gente vive
-                    en el campo. Ubicado en el corazón del norte del departamento, este municipio destaca por su
-                    juventud y diversidad. Aquí, la educación agroambiental y el café son los motores que están
-                    transformando el futuro, reemplazando economías ilícitas por sueños de paz y sostenibilidad.</p>
+                <p class="lead">Suárez, Cauca, es un municipio ubicado en el norte del departamento del Cauca, Colombia.
+                    Con más de 33.762 habitantes y una población mayoritariamente rural, este territorio se destaca por
+                    su tradición cafetera, su diversidad cultural y su compromiso con el desarrollo sostenible. En
+                    Suárez, el café, la educación agroambiental y el trabajo comunitario son pilares que impulsan el
+                    progreso del municipio.</p>
+                <div class="mt-4">
+                    <a href="{% url 'inicio:historia' %}" class="btn btn-primary rounded-pill px-4 fw-bold">
+                        Leer historia completa <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
             </div>
             <div class="col-lg-6 text-center">
                 {% static 'img/comunidades_hero.webp' as com_hero %}
