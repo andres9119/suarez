@@ -3,10 +3,11 @@
 {% load youtube_tags %}
 {% load image_utils %}
 
-{% block title %}Suárez, Cauca - Caficultura y Tradición{% endblock %}
+{% block title %}Suárez, Cauca - Territorio Cafetero del Norte del Cauca | Café Especial y Turismo Rural{% endblock %}
 
-{% block meta_description %}Suárez 100% café, Cauca. Portal de noticias, tradición y la riqueza cultural de nuestro
-territorio cafetero.{% endblock %}
+{% block meta_description %}Suárez 100% café, territorio cafetero del norte del Cauca. Descubre nuestra tradición en
+caficultura, comunidad afro, turismo rural y la cultura del café especial en Colombia.{% endblock %}
+
 
 {% block extra_head %}
 {% if banner.imagen_fondo %}
@@ -115,9 +116,12 @@ territorio cafetero.{% endblock %}
         <div class="row align-items-center mb-5">
             <div class="col-lg-6">
                 <h3 class="fw-bold mb-3 text-primary"><i class="bi bi-geo-alt me-2"></i>Historia y Esencia</h3>
-                <p class="lead">Suárez, Cauca, es un municipio ubicado en el norte del departamento del Cauca, Colombia.
+                <p class="lead">Suárez, Cauca, es un municipio ubicado en el <strong>norte del departamento del
+                        Cauca</strong>, Colombia.
                     Con más de 33.762 habitantes y una población mayoritariamente rural, este territorio se destaca por
-                    su tradición cafetera, su diversidad cultural y su compromiso con el desarrollo sostenible. En
+                    su <a href="{% url 'experiencias_cafeteras:lista' %}" class="text-primary fw-bold">tradición
+                        cafetera</a>, su <a href="{% url 'comunidades:lista' %}" class="text-primary fw-bold">diversidad
+                        cultural</a> y su compromiso con el desarrollo sostenible. En
                     Suárez, el café, la educación agroambiental y el trabajo comunitario son pilares que impulsan el
                     progreso del municipio.</p>
                 <div class="mt-4">
@@ -138,8 +142,11 @@ territorio cafetero.{% endblock %}
             <div class="col-lg-6">
                 <h3 class="fw-bold mb-3 text-primary"><i class="bi bi-cup-hot me-2"></i>El Café: Orgullo de Nuestra
                     Tierra</h3>
-                <p class="lead">Nuestra tierra es reconocida por sus cultivos de café, sembrados en montañas verdes que
-                    dibujan un paisaje único. El café de Suárez es fruto del esfuerzo de familias campesinas que,
+                <p class="lead">Nuestra tierra es reconocida por sus cultivos de <a
+                        href="{% url 'experiencias_cafeteras:lista' %}" class="text-primary fw-bold">café especial</a>,
+                    sembrados en montañas verdes que
+                    dibujan un paisaje único. El café de Suárez es fruto del esfuerzo de <a
+                        href="{% url 'comunidades:lista' %}" class="text-primary fw-bold">familias campesinas</a> que,
                     generación tras generación, han hecho del trabajo agrícola una forma de vida digna y orgullosa. Cada
                     grano representa dedicación, tradición y amor por la tierra.</p>
             </div>
@@ -155,11 +162,14 @@ territorio cafetero.{% endblock %}
             <div class="col-lg-6">
                 <h3 class="fw-bold mb-3 text-primary"><i class="bi bi-people me-2"></i>Diversidad Cultural y Ancestral
                 </h3>
-                <p class="lead">Suárez es también un municipio pluricultural y diverso, hogar de comunidades indígenas y
-                    afrodescendientes que aportan saberes ancestrales, valores comunitarios y una visión profunda del
+                <p class="lead">Suárez es también un municipio pluricultural y diverso, hogar de <a
+                        href="{% url 'comunidades:lista' %}" class="text-primary fw-bold">comunidades indígenas y
+                        afrodescendientes</a> que aportan saberes ancestrales, valores comunitarios y una visión
+                    profunda del
                     respeto por la naturaleza. Entre las etnias presentes se destacan pueblos indígenas que conservan
                     sus costumbres, su lengua y su relación espiritual con el territorio, así como comunidades afro que
-                    enriquecen la identidad local con su música, su historia y su resistencia cultural.</p>
+                    enriquecen la identidad local con su música, su <a href="{% url 'inicio:historia' %}"
+                        class="text-primary fw-bold">historia</a> y su resistencia cultural.</p>
             </div>
             <div class="col-lg-6 text-center">
                 {% static 'img/cafeterasfondo.webp' as cult_hero %}
@@ -187,6 +197,233 @@ territorio cafetero.{% endblock %}
                     esperanza.</p>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Sección SEO: ¿Por qué Suárez es territorio cafetero del Cauca? -->
+<section class="section-padding bg-white">
+    <div class="container">
+        <article class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+                <header class="text-center mb-5">
+                    <span
+                        class="badge bg-accent text-navy mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase shadow-sm">
+                        <i class="bi bi-cup-hot me-2"></i>Territorio Cafetero
+                    </span>
+                    <h2 class="display-5 fw-bold text-primary mb-4">
+                        ¿Por qué Suárez es territorio cafetero del Cauca?
+                    </h2>
+                    <p class="lead text-muted">
+                        Descubre la tradición cafetera que define nuestra identidad en el norte del Cauca
+                    </p>
+                </header>
+
+                <div class="content-text">
+                    <p class="lead">
+                        <strong>Suárez</strong>, ubicado en el <strong>norte del Cauca</strong>, es reconocido como uno
+                        de los principales <strong>territorios cafeteros</strong> de Colombia. Nuestra tradición en
+                        <strong>caficultura</strong> se remonta a generaciones de familias campesinas que han cultivado
+                        <strong>café especial</strong> en las montañas de este municipio, convirtiendo cada grano en un
+                        símbolo de dedicación, calidad y amor por la tierra.
+                    </p>
+
+                    <h3 class="fw-bold text-primary mt-5 mb-3"><i class="bi bi-geo-alt me-2"></i>Geografía privilegiada
+                        para el café especial</h3>
+                    <p>
+                        El <strong>norte del Cauca</strong> ofrece condiciones geográficas y climáticas excepcionales
+                        para el cultivo de <strong>café especial</strong>. Suárez se encuentra a una altitud promedio de
+                        1,050 metros sobre el nivel del mar, con zonas cafeteras que alcanzan hasta los 1,800 msnm. Esta
+                        variación altitudinal, combinada con suelos volcánicos ricos en nutrientes, temperaturas
+                        templadas y una distribución equilibrada de lluvias, crea el ambiente perfecto para producir
+                        granos de café de alta calidad con perfiles de sabor únicos y complejos.
+                    </p>
+                    <p>
+                        La topografía montañosa de nuestro <a href="{% url 'inicio:historia' %}"
+                            class="text-primary fw-bold">municipio</a> permite que el café se cultive en laderas con
+                        excelente drenaje, mientras que la sombra natural de árboles nativos protege los cultivos y
+                        contribuye a la sostenibilidad ambiental. Estas características hacen que el café de Suárez sea
+                        apreciado tanto en el mercado nacional como internacional.
+                    </p>
+
+                    <h3 class="fw-bold text-primary mt-5 mb-3"><i class="bi bi-clock-history me-2"></i>Tradición
+                        cafetera de generaciones</h3>
+                    <p>
+                        La <strong>caficultura</strong> en Suárez no es solo una actividad económica, es parte
+                        fundamental de nuestra identidad cultural. Durante más de un siglo, las familias cafeteras han
+                        transmitido de generación en generación los conocimientos y técnicas para cultivar, cosechar y
+                        procesar el <strong>café especial</strong>. Este saber ancestral se combina hoy con prácticas
+                        modernas de agricultura sostenible, certificaciones de calidad y procesos de beneficio que
+                        garantizan la excelencia del producto final.
+                    </p>
+                    <p>
+                        Nuestras <a href="{% url 'comunidades:lista' %}" class="text-primary fw-bold">comunidades
+                            cafeteras</a> trabajan organizadas en asociaciones y cooperativas que fortalecen la
+                        comercialización directa, mejoran los ingresos de los productores y promueven el desarrollo
+                        rural. Estas organizaciones también impulsan proyectos de <strong>turismo rural</strong> que
+                        permiten a los visitantes conocer de cerca el proceso del café, desde la semilla hasta la taza.
+                    </p>
+
+                    <h3 class="fw-bold text-primary mt-5 mb-3"><i class="bi bi-people me-2"></i>Comunidad afro y
+                        diversidad cultural</h3>
+                    <p>
+                        La <strong>comunidad afro</strong> de Suárez ha jugado un papel fundamental en la construcción
+                        de la tradición cafetera del <strong>norte del Cauca</strong>. Su conocimiento del territorio,
+                        su relación ancestral con la tierra y su espíritu trabajador han sido pilares en el desarrollo
+                        de la <strong>caficultura</strong> local. La cultura afrodescendiente aporta no solo mano de
+                        obra, sino también saberes tradicionales sobre el manejo del suelo, la conservación del agua y
+                        la biodiversidad.
+                    </p>
+                    <p>
+                        Además, las comunidades indígenas presentes en el municipio enriquecen esta diversidad cultural
+                        con sus propias prácticas agrícolas y su visión de armonía con la naturaleza. Esta
+                        pluriculturalidad convierte a Suárez en un territorio donde el <strong>café especial</strong> es
+                        el resultado de un diálogo intercultural que respeta las tradiciones y promueve la innovación.
+                    </p>
+
+                    <h3 class="fw-bold text-primary mt-5 mb-3"><i class="bi bi-award me-2"></i>Café especial de alta
+                        calidad</h3>
+                    <p>
+                        El <strong>café especial</strong> de Suárez se caracteriza por sus notas de sabor que incluyen
+                        matices frutales, cítricos y achocolatados, con una acidez balanceada y un cuerpo medio a alto.
+                        Los caficultores del municipio cultivan principalmente variedades como Caturra, Castillo y
+                        Colombia, seleccionadas por su adaptabilidad al clima local y su potencial de calidad.
+                    </p>
+                    <p>
+                        Muchos productores han adoptado procesos de beneficio especializados como el lavado, el honey y
+                        el natural, que permiten resaltar las características únicas de cada lote. Algunos cafés de
+                        Suárez han obtenido puntajes superiores a 84 puntos en la escala SCA (Specialty Coffee
+                        Association), lo que los posiciona en la categoría de cafés de especialidad reconocidos
+                        internacionalmente.
+                    </p>
+                    <p>
+                        Descubre más sobre nuestras <a href="{% url 'experiencias_cafeteras:lista' %}"
+                            class="text-primary fw-bold">experiencias cafeteras</a> y conoce de primera mano el proceso
+                        de producción del café en Suárez.
+                    </p>
+
+                    <h3 class="fw-bold text-primary mt-5 mb-3"><i class="bi bi-tree me-2"></i>Turismo rural y
+                        agroturismo cafetero</h3>
+                    <p>
+                        El <strong>turismo rural</strong> en Suárez ha encontrado en el café su principal atractivo.
+                        Cada vez más visitantes llegan al <strong>norte del Cauca</strong> interesados en vivir la
+                        experiencia completa del café: recorrer las fincas, participar en la recolección de granos
+                        maduros, conocer el proceso de beneficio y degustar tazas de <strong>café especial</strong>
+                        recién preparado.
+                    </p>
+                    <p>
+                        Este modelo de <strong>turismo rural</strong> no solo diversifica los ingresos de las familias
+                        cafeteras, sino que también educa a los consumidores sobre el valor del café de calidad y la
+                        importancia de pagar precios justos a los productores. Las rutas cafeteras de Suárez ofrecen
+                        paisajes impresionantes, gastronomía local y la calidez de nuestra gente, convirtiendo cada
+                        visita en una experiencia memorable.
+                    </p>
+
+                    <h3 class="fw-bold text-primary mt-5 mb-3"><i class="bi bi-calendar-event me-2"></i>Eventos y ferias
+                        del café</h3>
+                    <p>
+                        Aunque Suárez aún no cuenta con una <strong>feria de cafés especiales</strong> consolidada a
+                        nivel regional, el municipio participa activamente en eventos cafeteros del departamento del
+                        Cauca y del país. Los productores locales han presentado sus cafés en ferias nacionales,
+                        concursos de calidad y ruedas de negocios, ganando reconocimiento y abriendo mercados para sus
+                        productos.
+                    </p>
+                    <p>
+                        La visión a futuro incluye la creación de una <strong>feria de cafés especiales</strong> propia
+                        que reúna a productores, compradores, baristas y amantes del café para celebrar la riqueza
+                        cafetera del <strong>norte del Cauca</strong> y posicionar a Suárez como un destino cafetero de
+                        referencia en Colombia.
+                    </p>
+
+                    <h3 class="fw-bold text-primary mt-5 mb-3"><i class="bi bi-heart me-2"></i>Compromiso con el futuro
+                    </h3>
+                    <p>
+                        La <strong>caficultura</strong> en Suárez mira hacia el futuro con optimismo y responsabilidad.
+                        Los caficultores están comprometidos con prácticas sostenibles que protegen el medio ambiente,
+                        conservan la biodiversidad y garantizan la viabilidad económica de sus fincas. Proyectos de
+                        reforestación, manejo integrado de plagas, uso eficiente del agua y energías limpias son parte
+                        de la agenda cafetera del municipio.
+                    </p>
+                    <p>
+                        Además, se impulsa la formación de nuevas generaciones de caficultores a través de escuelas de
+                        campo, capacitaciones técnicas y programas de relevo generacional que aseguran la continuidad de
+                        esta noble tradición.
+                    </p>
+                    <p>
+                        Conoce más sobre nuestro compromiso con el desarrollo sostenible en nuestra sección de <a
+                            href="{% url 'noticias:lista' %}" class="text-primary fw-bold">noticias</a> y mantente
+                        informado sobre los avances del sector cafetero en Suárez.
+                    </p>
+                </div>
+
+                <!-- Enlaces relacionados -->
+                <div class="row g-4 mt-5 pt-4 border-top">
+                    <div class="col-12">
+                        <h4 class="fw-bold text-navy mb-4"><i class="bi bi-link-45deg me-2"></i>Explora más sobre Suárez
+                        </h4>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="{% url 'experiencias_cafeteras:lista' %}"
+                            class="card border-0 shadow-sm h-100 text-decoration-none hover-lift">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-cup-hot fs-1 text-accent mb-3 d-block"></i>
+                                <h5 class="fw-bold text-navy mb-2">Experiencias Cafeteras</h5>
+                                <p class="text-muted small mb-0">Vive el proceso del café de cerca</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="{% url 'comunidades:lista' %}"
+                            class="card border-0 shadow-sm h-100 text-decoration-none hover-lift">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-people fs-1 text-accent mb-3 d-block"></i>
+                                <h5 class="fw-bold text-navy mb-2">Comunidades</h5>
+                                <p class="text-muted small mb-0">Conoce nuestra diversidad cultural</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="{% url 'inicio:historia' %}"
+                            class="card border-0 shadow-sm h-100 text-decoration-none hover-lift">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-book fs-1 text-accent mb-3 d-block"></i>
+                                <h5 class="fw-bold text-navy mb-2">Historia</h5>
+                                <p class="text-muted small mb-0">Nuestra tradición y raíces</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="{% url 'noticias:lista' %}"
+                            class="card border-0 shadow-sm h-100 text-decoration-none hover-lift">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-newspaper fs-1 text-accent mb-3 d-block"></i>
+                                <h5 class="fw-bold text-navy mb-2">Noticias</h5>
+                                <p class="text-muted small mb-0">Actualidad del municipio</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="{% url 'documentos:lista' %}"
+                            class="card border-0 shadow-sm h-100 text-decoration-none hover-lift">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-file-earmark-text fs-1 text-accent mb-3 d-block"></i>
+                                <h5 class="fw-bold text-navy mb-2">Documentos</h5>
+                                <p class="text-muted small mb-0">Información oficial</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="{% url 'contacto:index' %}"
+                            class="card border-0 shadow-sm h-100 text-decoration-none hover-lift">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-envelope fs-1 text-accent mb-3 d-block"></i>
+                                <h5 class="fw-bold text-navy mb-2">Contacto</h5>
+                                <p class="text-muted small mb-0">Comunícate con nosotros</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
     </div>
 </section>
 
