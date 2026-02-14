@@ -47,35 +47,41 @@ ciudadano.{% endblock %}
 
                         <form method="post">
                             {% csrf_token %}
+                            {{ form.website }} {# Honeypot invisible #}
                             <div class="row g-4">
                                 <div class="col-md-6">
-                                    <label for="nombre"
+                                    <label for="{{ form.nombre.id_for_label }}"
                                         class="form-label fw-bold small text-uppercase text-muted">Nombre
                                         Completo</label>
-                                    <input type="text"
-                                        class="form-control form-control-lg rounded-4 border-0 bg-light p-3" id="nombre"
-                                        name="nombre" placeholder="Tu nombre" required>
+                                    {{ form.nombre }}
+                                    {% if form.nombre.errors %}
+                                    <div class="text-danger small mt-1">{{ form.nombre.errors.0 }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email" class="form-label fw-bold small text-uppercase text-muted">Correo
+                                    <label for="{{ form.email.id_for_label }}"
+                                        class="form-label fw-bold small text-uppercase text-muted">Correo
                                         Electrónico</label>
-                                    <input type="email"
-                                        class="form-control form-control-lg rounded-4 border-0 bg-light p-3" id="email"
-                                        name="email" placeholder="email@ejemplo.com" required>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                    <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-12">
-                                    <label for="asunto"
+                                    <label for="{{ form.asunto.id_for_label }}"
                                         class="form-label fw-bold small text-uppercase text-muted">Asunto</label>
-                                    <input type="text"
-                                        class="form-control form-control-lg rounded-4 border-0 bg-light p-3" id="asunto"
-                                        name="asunto" placeholder="Motivo de tu mensaje" required>
+                                    {{ form.asunto }}
+                                    {% if form.asunto.errors %}
+                                    <div class="text-danger small mt-1">{{ form.asunto.errors.0 }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-12">
-                                    <label for="mensaje"
+                                    <label for="{{ form.mensaje.id_for_label }}"
                                         class="form-label fw-bold small text-uppercase text-muted">Mensaje</label>
-                                    <textarea class="form-control form-control-lg rounded-4 border-0 bg-light p-3"
-                                        id="mensaje" name="mensaje" rows="5" placeholder="Escribe aquí tu mensaje..."
-                                        required></textarea>
+                                    {{ form.mensaje }}
+                                    {% if form.mensaje.errors %}
+                                    <div class="text-danger small mt-1">{{ form.mensaje.errors.0 }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-12">
                                     <p class="small text-muted mb-3">
@@ -87,6 +93,7 @@ ciudadano.{% endblock %}
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
 
