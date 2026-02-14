@@ -1099,3 +1099,66 @@ body.acc-links a {
     border: 0;
     z-index: 3;
 }
+
+/* ========================================
+   INLINE STYLES FROM TEMPLATES (CONSOLIDATED)
+   ======================================== */
+
+/* Critical CSS from base.html (for above-the-fold content) */
+/* Note: These are duplicates of existing rules but kept for performance */
+.navbar-brand img {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1/1;
+}
+
+.hero-bg-img {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+/* Historia page styles (from inicio/historia.html) */
+.content-rich p {
+    margin-bottom: 1.5rem;
+    font-size: 1.15rem;
+    color: #4a4a4a;
+    line-height: 1.8;
+}
+
+.breadcrumb-item a {
+    color: var(--primary);
+}
+
+.leading-relaxed {
+    line-height: 1.8;
+}
+
+/* Comunidades detalle page styles (from comunidades/detalle.html) */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.hover-opacity-100:hover {
+    opacity: 1 !important;
+    transition: var(--transition);
+}
+
+.content-text {
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+/* Footer logo hover effects */
+.transition-hover {
+    transition: var(--transition);
+}
+
+.hover-opacity-100:hover {
+    opacity: 1 !important;
+}
